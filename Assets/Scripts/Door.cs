@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class Door : Task
 {
 	public void Open()
@@ -21,4 +22,11 @@ public class Door : Task
 	{
 		gameObject.SetActive(true); //TODO: visuals
 	}
+
+	private void OnColliderEnter(Collider other)
+	{
+		if (other.gameObject.layer == Constants.LAYER_PLAYER) CompleteTask();
+	}
+
+
 }

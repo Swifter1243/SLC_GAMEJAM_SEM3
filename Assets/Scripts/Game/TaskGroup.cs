@@ -28,12 +28,6 @@ public class TaskGroup : Resettable
     private void ResetTasks()
     {
         _tasksLeft = tasks.Length;
-        
-        //NOTE: this is no longer necessary now that the component Resettable now handles resets.
-        //foreach (Task levelTask in tasks)
-        //{
-        //    levelTask.Reset();
-        //}
     }
 
     public void TaskCompleted(Task levelTask)
