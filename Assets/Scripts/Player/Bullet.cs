@@ -11,4 +11,12 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == Constants.LAYER_TARGET)
+        {
+            other.gameObject.GetComponent<TargetTask>().Hit();
+        }
+    }
 }
