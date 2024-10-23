@@ -5,8 +5,7 @@ using UnityEngine;
 public class FaceCursor : MonoBehaviour
 {
     private Camera _camera;
-
-    // Update is called once per frame
+    
     private void Start()
     {
         _camera = Camera.main;
@@ -14,14 +13,20 @@ public class FaceCursor : MonoBehaviour
 
     void Update()
     {
-        if (_camera)
-        {
-            Vector3 cursorWorld = _camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 toCursor = cursorWorld - transform.position;
-            
-            float angle = Mathf.Atan2(toCursor.y, toCursor.x) * Mathf.Rad2Deg;
-            
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
+        transform.rotation = Quaternion.Euler(0, 0, GetAngle());
+    }
+
+    public float GetAngle()
+    {
+        Vector2 toCursor = GetVectorToCursor();
+        return Mathf.Atan2(toCursor.y, toCursor.x) * Mathf.Rad2Deg;
+    }
+
+    public Vector2 GetVectorToCursor()
+    {
+        Vector3 cursorWorld = _camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 toCursor = cursorWorld - transform.position;
+        
+        return toCursor;
     }
 }
