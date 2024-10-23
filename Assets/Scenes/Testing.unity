@@ -123,6 +123,42 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &201404973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+  m_PrefabInstance: {fileID: 409986718856610706}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &201404975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201404973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b87befe7e2f4f4280c50dd8c8ba976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks:
+  - {fileID: 3401289890130916555}
+  - {fileID: 237765047}
+  - {fileID: 1273086146}
+  onTaskGroupComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 409986718856610707}
+        m_TargetAssemblyTypeName: FinalDoor, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &237765046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -733,28 +769,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1269261869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e04d679af04e68b8bb358c9f564fa7, type: 3}
+  m_Script: {fileID: 11500000, guid: cc858634a689db446a65e10585d82f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTasks:
-  - {fileID: 3401289890130916555}
-  - {fileID: 237765047}
-  - {fileID: 1273086146}
-  onTasksComplete:
+  taskGroups:
+  - {fileID: 0}
+  onLevelComplete:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1269261872}
-        m_TargetAssemblyTypeName: Logger, Assembly-CSharp
-        m_MethodName: Log
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Tasks complete!
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1269261872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,6 +969,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &409986718856610706
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_Name
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 201404975}
+  m_SourcePrefab: {fileID: 100100000, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+--- !u!114 &409986718856610707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7795735308338723961, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+  m_PrefabInstance: {fileID: 409986718856610706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201404973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5645c1856f94e14c8f3fa0c815f8977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3401289890130916554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1030,3 +1123,4 @@ SceneRoots:
   - {fileID: 237765046}
   - {fileID: 1273086145}
   - {fileID: 1269261870}
+  - {fileID: 409986718856610706}
