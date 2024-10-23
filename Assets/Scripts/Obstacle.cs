@@ -8,19 +8,30 @@ public class Obstacle : MonoBehaviour
 	[SerializeField] private Vector2 direction;
 	private Rigidbody2D rbody;
 
-    private void Start()
-    {
-        rbody = GetComponent<Rigidbody2D>();
-		rbody.velocity = direction;
-    }
+	const float PHYS_IMPULSE_SNAP_DEGREES = 45.0f;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+	private void Start()
 	{
-		//TODO: Filter players
+		rbody = GetComponent<Rigidbody2D>();
+		rbody.velocity = direction;
+	}
 
-		if (Vector2.Dot(direction, collision.relativeVelocity) < 0) // Only execute if
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+        //TODO: Filter players
+
+        //Get the total impulse (but no tangential forces)
+        Vector2 impulse = Vector2.zero;
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            ContactPoint2D contactPoint = collision.GetContact(i);
+            Vector2 contactImpulse = contactPoint.normal * contactPoint.normalImpulse;
+            impulse += contactImpulse;
+        }
+
+        if (Vector2.Dot(direction, impulse) < 0) //Filter by direction
 		{
-			direction = Vector2.Reflect(direction, collision.relativeVelocity.normalized);
+            direction = Vector2.Reflect(direction, impulse.normalized);
 			rbody.velocity = direction;
 		}
 	}
