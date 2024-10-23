@@ -584,6 +584,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskGroups:
   - {fileID: 8133404703683851788}
+  resetArray:
+  - {fileID: 8133404703683851788}
+  - {fileID: 6732789686196072984}
   onLevelComplete:
     m_PersistentCalls:
       m_Calls: []
