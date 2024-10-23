@@ -4,19 +4,19 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelManager : MonoBehaviour, IResettable
+public class Level : MonoBehaviour, IResettable
 {
     public TaskGroup[] taskGroups;
 
-    //public Object.
-    public IResettable[] resetObjects;
+    public UnityEngine.Object resetObjects;
+    //private IResettable[] resetObjects;
     public UnityEvent onLevelComplete;
 
     private int _taskGroupsLeft;
 
     private void Start()
     {
-        //list.Where(t => t is MyType);
+        //list.Where(t => t is IResettable)
 
 
 
