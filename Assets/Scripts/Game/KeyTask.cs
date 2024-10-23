@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class KeyTask : Task
+
+[RequireComponent(typeof(Collider2D))]
+public class KeyTask : Task, IResettable
 {
     private void OnTriggerEnter2D(Collider2D other)
     {

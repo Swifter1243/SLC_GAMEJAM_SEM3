@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public abstract class Resettable : MonoBehaviour
+public interface IResettable
 {
 	public abstract void Reset();
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TaskGroup : Resettable
+public class TaskGroup : MonoBehaviour, IResettable
 {
     public Task[] tasks;
     public UnityEvent onTaskGroupComplete;
@@ -20,7 +20,7 @@ public class TaskGroup : Resettable
         CheckCompletion();
     }
 
-    public override void Reset()
+    public void Reset()
     {
         ResetTasks();
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Door : Task
+public class Door : Task, IResettable
 {
 	public void Open()
 	{
-		gameObject.SetActive(false); //TODO: visuals
+		gameObject.SetActive(true); //TODO: visuals
 	}
 
 	protected override void CompleteTask()
@@ -20,12 +20,13 @@ public class Door : Task
 
 	public override void Reset()
 	{
-		gameObject.SetActive(true); //TODO: visuals
+		base.Reset();
+		gameObject.SetActive(false); //TODO: visuals
 	}
 
-	private void OnColliderEnter(Collider other)
+	private void OnTriggerEnter2D(Collider2D collider)
 	{
-		if (other.gameObject.layer == Constants.LAYER_PLAYER) CompleteTask();
+		if (collider.gameObject.layer == Constants.LAYER_PLAYER) CompleteTask();
 	}
 
 

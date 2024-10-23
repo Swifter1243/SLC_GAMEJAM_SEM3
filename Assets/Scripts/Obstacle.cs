@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Obstacle : Resettable
+public class Obstacle : MonoBehaviour, IResettable
 {
 	[SerializeField] private Vector2 direction;
 	private Rigidbody2D rbody;
@@ -45,11 +45,11 @@ public class Obstacle : Resettable
 		}
 	}
 
-	public override void Reset()
+	public void Reset()
 	{
 		rbody.velocity = direction = initialDirection;
 		transform.position = initialPosition;
-
+	
 		return;
 	}
 }
