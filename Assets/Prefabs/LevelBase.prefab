@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2732397707681152188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9129452084826326312}
+  - component: {fileID: 7258285625751367330}
+  m_Layer: 0
+  m_Name: Logger
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9129452084826326312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732397707681152188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1570788301539880044}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7258285625751367330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732397707681152188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1704f33b577974dace39e4942b87de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3488975099177319286
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +81,7 @@ Transform:
   - {fileID: 818614898526996477}
   - {fileID: 8032480733887927907}
   - {fileID: 2172334333921371878}
+  - {fileID: 9129452084826326312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2358981055515961775
@@ -583,6 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8032480733887927907}
   - component: {fileID: 8133404703683851788}
+  - component: {fileID: 6732789686196072984}
   m_Layer: 0
   m_Name: TaskGroups
   m_TagString: Untagged
@@ -621,16 +667,57 @@ MonoBehaviour:
   onTaskGroupComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7795735308338723961, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
-        m_TargetAssemblyTypeName: FinalDoor, Assembly-CSharp
-        m_MethodName: Open
-        m_Mode: 1
+      - m_Target: {fileID: 2253286944023250573}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7258285625751367330}
+        m_TargetAssemblyTypeName: Logger, Assembly-CSharp
+        m_MethodName: Log
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Door opened.
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6732789686196072984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454556754127394936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b87befe7e2f4f4280c50dd8c8ba976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks:
+  - {fileID: 7338554704259981185}
+  onTaskGroupComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7258285625751367330}
+        m_TargetAssemblyTypeName: Logger, Assembly-CSharp
+        m_MethodName: Log
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level completed!
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &8369833423475093763
@@ -6388,3 +6475,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
   m_PrefabInstance: {fileID: 6079096622136772446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2253286944023250573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+  m_PrefabInstance: {fileID: 6079096622136772446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7338554704259981185 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3569809364611848415, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+  m_PrefabInstance: {fileID: 6079096622136772446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253286944023250573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9885f972e0de543a0fba9a86266327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

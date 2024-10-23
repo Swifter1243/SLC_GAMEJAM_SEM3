@@ -12,31 +12,27 @@ public class LevelManager : Resettable
 
     private void Start()
     {
-        foreach (TaskGroup task in taskGroups)
-        {
-            //TODO
-        }
-
-        ResetTasks();
+        ResetTaskGroups();
     }
 
     public override void Reset()
     {
-        ResetTasks();
+        ResetTaskGroups();
     }
 
-    private void ResetTasks()
+    private void ResetTaskGroups()
     {
         _taskGroupsLeft = taskGroups.Length;
     }
 
-    public void TaskCompleted(Task levelTask)
+    public void TaskGroupCompleted(TaskGroup group)
     {
         _taskGroupsLeft--;
 
-        if (_taskGroupsLeft == 0)
-        {
-            onLevelComplete.Invoke();
-        }
+        CheckCompletion();
+    }
+    private void CheckCompletion()
+    {
+        if (_taskGroupsLeft == 0) onLevelComplete.Invoke();
     }
 }

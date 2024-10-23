@@ -11,7 +11,7 @@ public class KeyTask : Task
         }
     }
 
-    protected override void _Reset()
+    public override void Reset()
     {
         gameObject.SetActive(true);
     }
