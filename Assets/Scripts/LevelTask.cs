@@ -4,17 +4,17 @@ using UnityEngine.Serialization;
 public abstract class LevelTask : MonoBehaviour
 {
     public bool isCompleted = false;
-    protected LevelManager levelManager;
+    private LevelManager _levelManager;
 
     protected void CompleteTask()
     {
         isCompleted = true;
-        levelManager.TaskCompleted(this);
+        _levelManager.TaskCompleted(this);
     }
 
     public void SetLevelManager(LevelManager lm)
     {
-        levelManager = lm;
+        _levelManager = lm;
     }
 
     public void Reset()
