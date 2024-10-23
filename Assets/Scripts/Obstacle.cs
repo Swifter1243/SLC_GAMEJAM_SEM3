@@ -8,8 +8,6 @@ public class Obstacle : MonoBehaviour
 	[SerializeField] private Vector2 direction;
 	private Rigidbody2D rbody;
 
-	const float PHYS_IMPULSE_SNAP_DEGREES = 45.0f;
-
 	private void Start()
 	{
 		rbody = GetComponent<Rigidbody2D>();
