@@ -583,6 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8032480733887927907}
   - component: {fileID: 8133404703683851788}
+  - component: {fileID: 6732789686196072984}
   m_Layer: 0
   m_Name: TaskGroups
   m_TagString: Untagged
@@ -628,6 +629,34 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6732789686196072984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454556754127394936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b87befe7e2f4f4280c50dd8c8ba976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tasks: []
+  onTaskGroupComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

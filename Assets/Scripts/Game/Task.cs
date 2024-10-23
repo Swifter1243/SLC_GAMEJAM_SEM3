@@ -6,7 +6,7 @@ public abstract class Task : Resettable
     public bool isCompleted = false;
     private TaskGroup _taskGroupManager;
 
-    protected void CompleteTask()
+    virtual protected void CompleteTask()
     {
         isCompleted = true;
         _taskGroupManager.TaskCompleted(this);
@@ -20,8 +20,5 @@ public abstract class Task : Resettable
     public override void Reset()
     {
         isCompleted = false;
-        _Reset();
     }
-
-    protected abstract void _Reset();
 }
