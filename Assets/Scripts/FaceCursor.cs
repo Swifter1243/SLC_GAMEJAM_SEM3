@@ -16,9 +16,10 @@ public class FaceCursor : MonoBehaviour
     {
         if (_camera)
         {
-            Vector2 screen = _camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 cursorWorld = _camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 toCursor = cursorWorld - transform.position;
             
-            float angle = Mathf.Atan2(screen.y, screen.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(toCursor.y, toCursor.x) * Mathf.Rad2Deg;
             
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
