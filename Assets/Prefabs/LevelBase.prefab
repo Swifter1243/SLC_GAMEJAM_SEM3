@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1570788301539880044}
   - component: {fileID: 2358981055515961775}
+  - component: {fileID: 7182563678751824370}
   m_Layer: 0
   m_Name: LevelBase
   m_TagString: Untagged
@@ -80,7 +81,6 @@ Transform:
   - {fileID: 2723956948765951388}
   - {fileID: 818614898526996477}
   - {fileID: 8032480733887927907}
-  - {fileID: 2172334333921371878}
   - {fileID: 9129452084826326312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,6 +96,24 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &7182563678751824370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3488975099177319286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc858634a689db446a65e10585d82f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskGroups:
+  - {fileID: 8133404703683851788}
+  resetObjects: {fileID: 0}
+  onLevelComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6077054559320686397
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,55 +556,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!1 &6816571237369421203
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2172334333921371878}
-  - component: {fileID: 8446321811174534645}
-  m_Layer: 0
-  m_Name: LevelManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2172334333921371878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6816571237369421203}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1570788301539880044}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8446321811174534645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6816571237369421203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc858634a689db446a65e10585d82f64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskGroups:
-  - {fileID: 8133404703683851788}
-  onLevelComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7300211130057575054
 GameObject:
   m_ObjectHideFlags: 0
