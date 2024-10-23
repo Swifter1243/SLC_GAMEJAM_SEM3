@@ -19,18 +19,18 @@ public class PlayerMovement : MonoBehaviour
     private void OnFire()
     {
         Vector2 toCursor = gun.faceCursor.GetVectorToCursor().normalized;
-        rb.AddForce(toCursor * shootForce);
+        rb.velocity -= toCursor * shootForce;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            rb.AddForce(Vector3.left * speed);
+            rb.AddForce(Vector2.left * speed);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            rb.AddForce(Vector3.right * speed);
+            rb.AddForce(Vector2.right * speed);
         }
     }
 }
