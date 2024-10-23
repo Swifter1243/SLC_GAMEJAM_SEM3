@@ -6,41 +6,42 @@ using UnityEngine.Events;
 
 public class Level : MonoBehaviour, IResettable
 {
-    public TaskGroup[] taskGroups;
+	public TaskGroup[] taskGroups;
 
-    public UnityEngine.Object resetObjects;
-    //private IResettable[] resetObjects;
-    public UnityEvent onLevelComplete;
+	public MonoBehaviour[] resetArray;
+	private IResettable[] resetInterfaces;
+	public UnityEvent onLevelComplete;
 
-    private int _taskGroupsLeft;
+	private int _taskGroupsLeft;
 
-    private void Start()
-    {
-        //list.Where(t => t is IResettable)
+	private void Start()
+	{
+		//Kinda cursed???
+		resetInterfaces = resetArray.Cast<Object>().OfType<IResettable>().ToArray();
 
+		ResetTaskGroups();
+	}
 
+	public void Reset()
+	{
+		ResetTaskGroups();
+		foreach (IResettable resettable in resetInterfaces) resettable.Reset();
+	}
 
-        ResetTaskGroups();
-    }
+	private void ResetTaskGroups()
+	{
+		_taskGroupsLeft = taskGroups.Length;
+		
+	}
 
-    public void Reset()
-    {
-        ResetTaskGroups();
-    }
+	public void TaskGroupCompleted(TaskGroup group)
+	{
+		_taskGroupsLeft--;
 
-    private void ResetTaskGroups()
-    {
-        _taskGroupsLeft = taskGroups.Length;
-    }
-
-    public void TaskGroupCompleted(TaskGroup group)
-    {
-        _taskGroupsLeft--;
-
-        CheckCompletion();
-    }
-    private void CheckCompletion()
-    {
-        if (_taskGroupsLeft == 0) onLevelComplete.Invoke();
-    }
+		CheckCompletion();
+	}
+	private void CheckCompletion()
+	{
+		if (_taskGroupsLeft == 0) onLevelComplete.Invoke();
+	}
 }
