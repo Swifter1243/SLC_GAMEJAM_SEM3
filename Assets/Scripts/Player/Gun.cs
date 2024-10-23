@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class Gun : MonoBehaviour
 {
     public FaceCursor faceCursor;
     public UnityEvent onFire;
+    public Bullet bulletPrefab;
+    public float shootForce = 10;
 
     bool _fired = false;
 
@@ -32,5 +35,9 @@ public class Gun : MonoBehaviour
     private void Fire()
     {
         onFire.Invoke();
+
+        Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Vector2 direction = faceCursor.GetVectorToCursor();
+        bullet.rb.velocity = direction * shootForce;
     }
 }
