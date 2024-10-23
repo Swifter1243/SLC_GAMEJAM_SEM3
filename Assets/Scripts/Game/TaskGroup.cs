@@ -15,8 +15,9 @@ public class TaskGroup : Resettable
         {
             task.SetTaskManager(this);
         }
-        
+
         ResetTasks();
+        CheckCompletion();
     }
 
     public override void Reset()
@@ -39,9 +40,11 @@ public class TaskGroup : Resettable
     {
         _tasksLeft--;
 
-        if (_tasksLeft == 0)
-        {
-            onTaskGroupComplete.Invoke();
-        }
+        CheckCompletion();
+    }
+
+    private void CheckCompletion()
+	{
+        if (_tasksLeft == 0) onTaskGroupComplete.Invoke();
     }
 }
