@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+[DefaultExecutionOrder(-50)]
 public class Level : MonoBehaviour, IResettable
 {
 	public TaskGroup[] taskGroups;
@@ -18,6 +19,12 @@ public class Level : MonoBehaviour, IResettable
 	{
 		//Kinda cursed???
 		resetInterfaces = resetArray.Cast<Object>().OfType<IResettable>().ToArray();
+
+		foreach (TaskGroup group in taskGroups)
+		{
+			group.SetGroupManager(this);
+		}
+
 
 		ResetTaskGroups();
 	}

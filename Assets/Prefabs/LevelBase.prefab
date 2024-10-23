@@ -110,10 +110,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskGroups:
   - {fileID: 8133404703683851788}
-  resetObjects: {fileID: 0}
+  - {fileID: 6732789686196072984}
+  resetArray:
+  - {fileID: 8133404703683851788}
+  - {fileID: 6732789686196072984}
   onLevelComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7258285625751367330}
+        m_TargetAssemblyTypeName: Logger, Assembly-CSharp
+        m_MethodName: Log
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Level complete!
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6077054559320686397
 GameObject:
   m_ObjectHideFlags: 0
