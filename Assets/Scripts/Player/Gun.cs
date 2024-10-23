@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     public FaceCursor faceCursor;
     public UnityEvent onFire;
     public Bullet bulletPrefab;
+    public Player player;
     public float shootForce = 10;
 
     bool _fired = false;
@@ -37,6 +38,7 @@ public class Gun : MonoBehaviour
         onFire.Invoke();
 
         Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bullet.Initialize(player);
         Vector2 direction = faceCursor.GetVectorToCursor();
         bullet.rb.velocity = direction * shootForce;
     }
