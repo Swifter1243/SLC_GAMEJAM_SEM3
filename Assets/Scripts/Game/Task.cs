@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-public abstract class Task : MonoBehaviour
+public abstract class Task : Resettable
 {
     public bool isCompleted = false;
     private TaskGroup _taskGroupManager;
@@ -17,7 +17,7 @@ public abstract class Task : MonoBehaviour
         _taskGroupManager = mgr;
     }
 
-    public void Reset()
+    public override void Reset()
     {
         isCompleted = false;
         _Reset();

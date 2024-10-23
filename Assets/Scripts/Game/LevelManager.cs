@@ -1,21 +1,21 @@
-﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class TaskGroup : Resettable
+public class LevelManager : Resettable
 {
-    public Task[] tasks;
+    public TaskGroup[] taskGroups;
     public UnityEvent onTaskGroupComplete;
 
     private int _tasksLeft;
-    
+
     private void Start()
     {
-        foreach (Task task in tasks)
+        foreach (TaskGroup task in tasks)
         {
             task.SetTaskManager(this);
         }
-        
+
         ResetTasks();
     }
 
@@ -27,12 +27,6 @@ public class TaskGroup : Resettable
     private void ResetTasks()
     {
         _tasksLeft = tasks.Length;
-        
-        //NOTE: this is no longer necessary now that the component Resettable now handles resets.
-        //foreach (Task levelTask in tasks)
-        //{
-        //    levelTask.Reset();
-        //}
     }
 
     public void TaskCompleted(Task levelTask)

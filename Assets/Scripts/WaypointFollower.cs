@@ -95,6 +95,6 @@ public class WaypointFollower : Resettable
 
 	public override void Reset()
 	{
-
+        throw new NotImplementedException();
 	}
 }
