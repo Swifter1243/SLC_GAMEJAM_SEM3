@@ -11,7 +11,27 @@ public class LevelManager : MonoBehaviour
     
     private void Start()
     {
+        foreach (LevelTask levelTask in levelTasks)
+        {
+            levelTask.SetLevelManager(this);
+        }
+        
+        ResetTasks();
+    }
+
+    public void Restart()
+    {
+        ResetTasks();
+    }
+
+    private void ResetTasks()
+    {
         _tasksLeft = levelTasks.Length;
+        
+        foreach (LevelTask levelTask in levelTasks)
+        {
+            levelTask.Reset();
+        }
     }
 
     public void TaskCompleted(LevelTask levelTask)
