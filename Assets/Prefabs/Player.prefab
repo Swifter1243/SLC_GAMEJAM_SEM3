@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: d919f4f3639bf7948b8f4fc62c407d8c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -174,8 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2179473115254754450}
   gun: {fileID: 4426934919644222248}
-  speed: 2
-  shootForce: 8
+  speed: 30
+  shootForce: 20
 --- !u!1 &5959822645562833374
 GameObject:
   m_ObjectHideFlags: 0
