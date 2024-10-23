@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : Resettable
 {
     public TaskGroup[] taskGroups;
-    public UnityEvent onTaskGroupComplete;
+    public UnityEvent onLevelComplete;
 
-    private int _tasksLeft;
+    private int _taskGroupsLeft;
 
     private void Start()
     {
-        foreach (TaskGroup task in tasks)
+        foreach (TaskGroup task in taskGroups)
         {
-            task.SetTaskManager(this);
+            //TODO
         }
 
         ResetTasks();
@@ -26,16 +27,16 @@ public class LevelManager : Resettable
 
     private void ResetTasks()
     {
-        _tasksLeft = tasks.Length;
+        _taskGroupsLeft = taskGroups.Length;
     }
 
     public void TaskCompleted(Task levelTask)
     {
-        _tasksLeft--;
+        _taskGroupsLeft--;
 
-        if (_tasksLeft == 0)
+        if (_taskGroupsLeft == 0)
         {
-            onTaskGroupComplete.Invoke();
+            onLevelComplete.Invoke();
         }
     }
 }
