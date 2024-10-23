@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class WaypointFollower : MonoBehaviour
+public class WaypointFollower : Resettable
 {
     public Transform[] waypoints;
     public float travelSpeed = 1;
@@ -92,4 +92,9 @@ public class WaypointFollower : MonoBehaviour
     {
         _currentWaypoint = (_currentWaypoint + 1) % waypoints.Length;
     }
+
+	public override void Reset()
+	{
+
+	}
 }

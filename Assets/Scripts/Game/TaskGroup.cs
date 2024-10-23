@@ -2,18 +2,18 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LevelManager : MonoBehaviour
+public class TaskGroup : MonoBehaviour
 {
-    public LevelTask[] levelTasks;
-    public UnityEvent onTasksComplete;
+    public Task[] tasks;
+    public UnityEvent onTaskGroupComplete;
 
     private int _tasksLeft;
     
     private void Start()
     {
-        foreach (LevelTask levelTask in levelTasks)
+        foreach (Task task in tasks)
         {
-            levelTask.SetLevelManager(this);
+            task.SetTaskManager(this);
         }
         
         ResetTasks();
@@ -26,21 +26,21 @@ public class LevelManager : MonoBehaviour
 
     private void ResetTasks()
     {
-        _tasksLeft = levelTasks.Length;
+        _tasksLeft = tasks.Length;
         
-        foreach (LevelTask levelTask in levelTasks)
+        foreach (Task levelTask in tasks)
         {
             levelTask.Reset();
         }
     }
 
-    public void TaskCompleted(LevelTask levelTask)
+    public void TaskCompleted(Task levelTask)
     {
         _tasksLeft--;
 
         if (_tasksLeft == 0)
         {
-            onTasksComplete.Invoke();
+            onTaskGroupComplete.Invoke();
         }
     }
 }

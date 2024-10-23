@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.Serialization;
 
-public abstract class LevelTask : MonoBehaviour
+public abstract class Task : MonoBehaviour
 {
     public bool isCompleted = false;
-    private LevelManager _levelManager;
+    private TaskGroup _taskGroupManager;
 
     protected void CompleteTask()
     {
         isCompleted = true;
-        _levelManager.TaskCompleted(this);
+        _taskGroupManager.TaskCompleted(this);
     }
 
-    public void SetLevelManager(LevelManager lm)
+    public void SetTaskManager(TaskGroup mgr)
     {
-        _levelManager = lm;
+        _taskGroupManager = mgr;
     }
 
     public void Reset()
