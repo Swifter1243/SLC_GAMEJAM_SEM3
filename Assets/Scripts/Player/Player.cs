@@ -12,9 +12,16 @@ public class Player : MonoBehaviour, IResettable
     public float speed;
     public float shootForce;
 
+    private Level _level;
+
     private void Start()
     {
         gun.onFire.AddListener(OnFire);
+    }
+
+    public void Initialize(Level level)
+    {
+        _level = level;
     }
 
     private void OnFire()
@@ -43,8 +50,15 @@ public class Player : MonoBehaviour, IResettable
         }
     }
 
+    public void Destroy()
+    {
+        ClearBullets();
+        Destroy(gameObject);
+    }
+
     public void Reset()
     {
+        transform.position = _level.spawnPoint.position;
         ClearBullets();
     }
 }
