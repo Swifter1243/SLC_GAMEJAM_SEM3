@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IResettable
 {
 	public Rigidbody2D rb;
+	public Animator animator;
 	public Gun gun;
 	public List<Bullet> bullets = new();
 	public float respawnTime = 0.2f;
@@ -16,10 +17,27 @@ public class Player : MonoBehaviour, IResettable
 	private Level _level;
 	private Camera _camera;
 
+	private const float GUY_ANIM_MOVE_SCALE = 0.2f;
+
+	private const string GUY_ANIM_AIM_NAME = "AimDir";
+	private const string GUY_ANIM_MOVE_NAME = "MoveDir";
+	private const int GUY_ANIM_MOVE_LAYER = 1;
+
+	private readonly int GUY_ANIM_AIM_INDEX = Animator.StringToHash(GUY_ANIM_AIM_NAME);
+	private readonly int GUY_ANIM_MOVE_INDEX = Animator.StringToHash(GUY_ANIM_MOVE_NAME);
+
+	private int animMoveParameter;
+
 	private void Start()
 	{
 		_camera = Camera.main;
 		gun.onFire.AddListener(OnFire);
+
+		if (animator)
+		{
+			
+		}
+
 	}
 
 	public void Initialize(Level level)
@@ -39,7 +57,15 @@ public class Player : MonoBehaviour, IResettable
 		}
 
 		UpdateUIScreenPosition();
+
+		if (animator)
+		{
+			float angle = gun.faceCursor.GetAngle() / (-360); //hacky
+			animator.SetFloat(GUY_ANIM_AIM_INDEX, angle);
+		}
 	}
+
+		
 
 	private void UpdateUIScreenPosition()
 	{
@@ -48,6 +74,21 @@ public class Player : MonoBehaviour, IResettable
 			UISingleton.playerScreenPosition = _camera.WorldToScreenPoint(transform.position);
 		}
 	}
+
+
+	private void FixedUpdate()
+	{
+		if(animator)
+		{
+			float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) / (MathF.PI * -2);
+			animator.SetFloat(GUY_ANIM_MOVE_INDEX, angle);
+			animator.SetLayerWeight(GUY_ANIM_MOVE_LAYER,
+				Mathf.Clamp01(
+					(1 + Mathf.Log(rb.velocity.magnitude)) * GUY_ANIM_MOVE_SCALE)
+				);
+		}
+	}
+
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
