@@ -38,7 +38,6 @@ public class Door : Task
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
-			doorLock.StopAllCoroutines();
 			StartCoroutine(CloseLock(doorLock, index * lockDelay));
 			index++;
 		}
@@ -67,6 +66,7 @@ public class Door : Task
 		base.Reset();
 		_isOpen = false;
 
+		StopAllCoroutines();
 		CloseLocks();
 	}
 
