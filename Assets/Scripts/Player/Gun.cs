@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     public Bullet bulletPrefab;
     public Player player;
     public float shootForce = 10;
-    public int bulletCount = 10;
+    public int bulletsLeft = 10;
 
     bool _fired = false;
 
@@ -36,12 +36,12 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
-        if (bulletCount == 0)
+        if (bulletsLeft == 0)
         {
             return;
         }
 
-        bulletCount--;
+        bulletsLeft--;
         onFire.Invoke();
 
         Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);

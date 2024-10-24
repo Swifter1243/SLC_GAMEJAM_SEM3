@@ -43,7 +43,19 @@ public class Level : MonoBehaviour, IResettable
 
 	private void RefillGun()
 	{
-		_player.gun.bulletCount = bullets;
+		_player.gun.bulletsLeft = bullets;
+	}
+
+	public float? GetBulletsLeft()
+	{
+		if (_player)
+		{
+			return _player.gun.bulletsLeft;
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 	public void Reset()
