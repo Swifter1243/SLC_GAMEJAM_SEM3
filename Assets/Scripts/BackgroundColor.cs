@@ -11,7 +11,8 @@ public class BackgroundColor : MonoBehaviour
     private void Update()
     {
         Color frameCol = color;
-        frameCol.a = Mathf.Pow(fade, Time.deltaTime);
+
+        frameCol.a = fade * Mathf.Pow(2, -Time.deltaTime);
 
         spriteRenderer.color = frameCol;
     }
