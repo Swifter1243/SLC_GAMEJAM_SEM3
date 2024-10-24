@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -552,6 +552,64 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PlatformH
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 31, y: 15, z: 31, w: 15}
+      outline: []
+      physicsShape:
+      - - {x: 32, y: 6}
+        - {x: 22, y: 16}
+        - {x: -22, y: 16}
+        - {x: -32, y: 6}
+        - {x: -32, y: -6}
+        - {x: -22, y: -16}
+        - {x: 22, y: -16}
+        - {x: 32, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d6cda8e5675524c9f75e905a249060
+      internalID: 687237677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlatformV
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 15, y: 31, z: 15, w: 31}
+      outline: []
+      physicsShape:
+      - - {x: -6, y: 32}
+        - {x: -16, y: 22}
+        - {x: -16, y: -22}
+        - {x: -6, y: -32}
+        - {x: 6, y: -32}
+        - {x: 16, y: -22}
+        - {x: 16, y: 22}
+        - {x: 7, y: 32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96b1a9c233fba142a60de57b1c75775
+      internalID: -1689286769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -581,6 +639,8 @@ TextureImporter:
       BounceThinL: 1723176819
       BounceThinR: -850333572
       BounceThinT: 1330450036
+      PlatformH: 687237677
+      PlatformV: -1689286769
       Tiles_1: -1213672658
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
