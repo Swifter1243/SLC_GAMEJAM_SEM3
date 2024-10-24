@@ -60,6 +60,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public Level GetCurrentLevel()
+    {
+        return _currentLevel;
+    }
+
     public void NextLevel()
     {
         currentLevelIndex++;
