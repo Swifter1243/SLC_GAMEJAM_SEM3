@@ -9,11 +9,13 @@ public class Player : MonoBehaviour, IResettable
 	public Animator animator;
 	public Gun gun;
 	public List<Bullet> bullets = new();
+	public float respawnTime = 0.2f;
 
 	public float speed;
 	public float shootForce;
 
 	private Level _level;
+	private Camera _camera;
 
 	private const float GUY_ANIM_MOVE_SCALE = 0.2f;
 
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour, IResettable
 
 	private void Start()
 	{
+		_camera = Camera.main;
 		gun.onFire.AddListener(OnFire);
 
 		if (animator)
@@ -42,8 +45,8 @@ public class Player : MonoBehaviour, IResettable
 		_level = level;
 		gun.bulletsLeft = _level.info.bulletCount;
 		UISingleton.Bullets = gun.bulletsLeft; //Kinda want to move this into Gun
-		UISingleton.OnPlayerSpawned.Invoke();
 		UpdateUIScreenPosition();
+		UISingleton.OnPlayerSpawned.Invoke();
 	}
 
 	private void Update()
@@ -66,7 +69,10 @@ public class Player : MonoBehaviour, IResettable
 
 	private void UpdateUIScreenPosition()
 	{
-		UISingleton.playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+		if (_camera)
+		{
+			UISingleton.playerScreenPosition = _camera.WorldToScreenPoint(transform.position);
+		}
 	}
 
 
@@ -110,13 +116,14 @@ public class Player : MonoBehaviour, IResettable
 	public void Die()
 	{
 		rb.simulated = false;
+		gun.Disable();
 		UISingleton.OnPlayerDeath.Invoke();
 		StartCoroutine(DeathCoroutine());
 	}
 
 	private IEnumerator DeathCoroutine()
 	{
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(respawnTime);
 
 		_level.Reset();
 	}
@@ -139,10 +146,12 @@ public class Player : MonoBehaviour, IResettable
 
 	public void Reset()
 	{
+		StopAllCoroutines();
 		rb.simulated = true;
+		gun.Enable();
+		transform.position = _level.spawnPoint.position;
 		UpdateUIScreenPosition();
 		UISingleton.OnPlayerSpawned.Invoke();
-		transform.position = _level.spawnPoint.position;
 		rb.velocity = Vector2.zero;
 		ClearBullets();
 

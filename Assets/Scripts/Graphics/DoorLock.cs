@@ -35,7 +35,7 @@ public class DoorLock : MonoBehaviour
         StartCoroutine(OpenCoroutine());
     }
 
-    public void Close()
+    public void Lock()
     {
         gameObject.SetActive(true);
         lockCoroutine = StartCoroutine(CloseCoroutine());
@@ -48,7 +48,7 @@ public class DoorLock : MonoBehaviour
         while (true)
         {
             _animationElapsed += Time.deltaTime;
-            
+
             float t = _animationElapsed / openTime;
             t = Ease.OutExpo(t);
             transform.localScale = Vector3.Lerp(new Vector3(1,1,1), new Vector3(0,1,1), t);
@@ -59,11 +59,11 @@ public class DoorLock : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
             }
-            
+
             yield return null;
         }
     }
-    
+
     private IEnumerator CloseCoroutine()
     {
         _animationElapsed = 0;
@@ -71,13 +71,13 @@ public class DoorLock : MonoBehaviour
         while (true)
         {
             _animationElapsed += Time.deltaTime;
-            
+
             float t = _animationElapsed / lockTime;
 
             float randomRange = (1 - t) * shakeStrength;
             Vector3 randomPos = new Vector3(
-                Random.Range(-randomRange, randomRange), 
-                Random.Range(-randomRange, randomRange), 
+                Random.Range(-randomRange, randomRange),
+                Random.Range(-randomRange, randomRange),
                 0);
             randomRange = (1 - t) * lockRotationRange;
             Vector3 randomRot = new Vector3(0, 0, Random.Range(-randomRange, randomRange));
@@ -94,7 +94,7 @@ public class DoorLock : MonoBehaviour
                 transform.localScale = Vector3.one;
                 break;
             }
-            
+
             yield return null;
         }
     }

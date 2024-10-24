@@ -14,6 +14,7 @@ public class Level : MonoBehaviour, IResettable
 	public UnityEvent onLevelComplete;
 	public Transform spawnPoint;
 	public Player playerPrefab;
+	public Door door;
 
 	public LevelInfo info;
 
@@ -39,6 +40,7 @@ public class Level : MonoBehaviour, IResettable
 	{
 		_player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 		_player.Initialize(this);
+		door.Initialize();
 		_resetInterfaces.Add(_player);
 	}
 
