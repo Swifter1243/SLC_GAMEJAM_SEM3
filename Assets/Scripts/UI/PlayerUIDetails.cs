@@ -13,14 +13,21 @@ public class PlayerUIDetails : MonoBehaviour
     private void OnPlayerSpawned()
     {
         gameObject.SetActive(true);
+        UpdateScreenPosition();
     }
 
     private void OnPlayerDeath()
     {
         gameObject.SetActive(false);
+        UpdateScreenPosition();
     }
 
     private void Update()
+    {
+        UpdateScreenPosition();
+    }
+
+    private void UpdateScreenPosition()
     {
         transform.position = UISingleton.playerScreenPosition;
     }

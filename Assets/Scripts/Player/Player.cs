@@ -25,6 +25,7 @@ public class Player : MonoBehaviour, IResettable
 		gun.bulletsLeft = _level.info.bulletCount;
 		UISingleton.Bullets = gun.bulletsLeft; //Kinda want to move this into Gun
 		UISingleton.OnPlayerSpawned.Invoke();
+		UpdateUIScreenPosition();
 	}
 
 	private void Update()
@@ -98,8 +99,8 @@ public class Player : MonoBehaviour, IResettable
 	public void Reset()
 	{
 		rb.simulated = true;
-		UISingleton.OnPlayerSpawned.Invoke();
 		UpdateUIScreenPosition();
+		UISingleton.OnPlayerSpawned.Invoke();
 		transform.position = _level.spawnPoint.position;
 		rb.velocity = Vector2.zero;
 		ClearBullets();
