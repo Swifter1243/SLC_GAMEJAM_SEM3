@@ -40,10 +40,12 @@ public class LevelManager : MonoBehaviour
         {
             _transitionElapsed += Time.deltaTime;
             float t = _transitionElapsed / transitionTime;
-            Vector2 a = _lastLevel.transform.position;
-            Vector2 b = _currentLevel.transform.position;
-            Vector2 c = Vector2.Lerp(a, b, t);
-            mainCamera.transform.position = new Vector3(c.x, c.y, mainCamera.transform.position.z);
+            Vector2 a = new Vector3(-spacing, 0, 0);
+            Vector2 b = Vector2.zero;
+            Vector2 c = new Vector3(spacing, 0, 0);
+
+            _lastLevel.transform.position = Vector2.Lerp(b, a, t);
+            _currentLevel.transform.position = Vector2.Lerp(c, b, t);
 
             if (_transitionElapsed >= transitionTime)
             {
