@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,7 +15,6 @@ public class LevelManager : MonoBehaviour
 
     private Level _lastLevel;
     private Level _currentLevel;
-    private bool _transitioning = false;
     private float _transitionElapsed = 0;
 
     private void Start()
@@ -30,9 +32,11 @@ public class LevelManager : MonoBehaviour
         return newLevel;
     }
 
-    private void Update()
+    private IEnumerator TransitionUpdate()
     {
-        if (_transitioning)
+        _transitionElapsed = 0;
+
+        while (true)
         {
             _transitionElapsed += Time.deltaTime;
             float t = _transitionElapsed / transitionTime;
@@ -43,12 +47,14 @@ public class LevelManager : MonoBehaviour
 
             if (_transitionElapsed >= transitionTime)
             {
-                _transitioning = false;
                 mainCamera.transform.position = new Vector3(0, 0, mainCamera.transform.position.z);
                 _currentLevel.transform.position = new Vector2(0, 0);
                 _currentLevel.StartGameplay();
                 Destroy(_lastLevel.gameObject);
+                break;
             }
+
+            yield return null;
         }
     }
 
@@ -58,7 +64,7 @@ public class LevelManager : MonoBehaviour
         _lastLevel = _currentLevel;
         _currentLevel = CreateLevel(currentLevelIndex);
         _currentLevel.transform.position = new Vector3(spacing, 0, 0);
-        _transitionElapsed = 0;
-        _transitioning = true;
+
+        StartCoroutine(TransitionUpdate());
     }
 }
