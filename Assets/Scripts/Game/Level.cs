@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-[DefaultExecutionOrder(-50)]
+[DefaultExecutionOrder(-100)]
 public class Level : MonoBehaviour, IResettable
 {
 	public TaskGroup[] taskGroups;
@@ -14,7 +14,6 @@ public class Level : MonoBehaviour, IResettable
 	public UnityEvent onLevelComplete;
 	public Transform spawnPoint;
 	public Player playerPrefab;
-	public int bullets;
 
 	public LevelInfo info;
 
@@ -35,34 +34,16 @@ public class Level : MonoBehaviour, IResettable
 		ResetTaskGroups();
 	}
 
+
 	public void StartGameplay()
 	{
 		_player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 		_player.Initialize(this);
-		RefillGun();
 		_resetInterfaces.Add(_player);
-	}
-
-	private void RefillGun()
-	{
-		_player.gun.bulletsLeft = bullets;
-	}
-
-	public float? GetBulletsLeft()
-	{
-		if (_player)
-		{
-			return _player.gun.bulletsLeft;
-		}
-		else
-		{
-			return null;
-		}
 	}
 
 	public void Reset()
 	{
-		RefillGun();
 		ResetTaskGroups();
 		foreach (IResettable resettable in _resetInterfaces) resettable.Reset();
 	}

@@ -12,7 +12,7 @@ public class Gun : MonoBehaviour
     public Bullet bulletPrefab;
     public Player player;
     public float shootForce = 10;
-    public int bulletsLeft = 10;
+    public int bulletsLeft = 1;
 
     bool _fired = false;
 
@@ -42,6 +42,7 @@ public class Gun : MonoBehaviour
         }
 
         bulletsLeft--;
+        UISingleton.Bullets = bulletsLeft;
         onFire.Invoke();
 
         Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);

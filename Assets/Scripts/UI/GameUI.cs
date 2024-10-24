@@ -4,6 +4,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
+public static class UISingleton
+{
+	static private int bullets;
+	static public int Bullets
+	{
+		get { return bullets; }
+		set { bullets = value; OnAmmoChanged.Invoke(); }
+	}
+
+	static public UnityEvent OnAmmoChanged { get; private set; } = new UnityEvent();
+}
+
+
 
 public class GameUI : MonoBehaviour
 {
@@ -11,28 +26,19 @@ public class GameUI : MonoBehaviour
     public TMP_Text bulletsText;
     public Button restartButton;
 
-    private void Start()
+    private void Awake()
     {
         restartButton.onClick.AddListener(RestartLevel);
+        UISingleton.OnAmmoChanged.AddListener(UpdateAmmo);
     }
 
     private void RestartLevel()
     {
         levelManager.GetCurrentLevel().Reset();
     }
-
-    private void Update()
-    {
-        Level currentLevel = levelManager.GetCurrentLevel();
-        float? bulletsLeft = currentLevel.GetBulletsLeft();
-
-        if (bulletsLeft.HasValue)
-        {
-            bulletsText.text = "Bullets Left: " + bulletsLeft.Value;
-        }
-        else
-        {
-            bulletsText.text = "Bullets Left: idk";
-        }
+    private void UpdateAmmo()
+	{
+        bulletsText.text = $"Bullets Left: {UISingleton.Bullets}";
     }
+
 }
