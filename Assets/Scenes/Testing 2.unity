@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 1551281551}
   - component: {fileID: 1551281550}
   - component: {fileID: 1551281554}
+  - component: {fileID: 1551281555}
   m_Layer: 0
   m_Name: Moving Platform
   m_TagString: Untagged
@@ -732,7 +733,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -809,7 +810,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.07, y: 4.76, z: -4.592389}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.57, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -831,10 +832,29 @@ MonoBehaviour:
   - {fileID: 15847459}
   - {fileID: 139667117}
   - {fileID: 1541518216}
+  effector: {fileID: 1551281555}
   travelSpeed: 3
   restTime: 1
   startingIndex: 1
   backAndForth: 1
+--- !u!252 &1551281555
+SurfaceEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551281549}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Speed: 1
+  m_SpeedVariation: 0
+  m_ForceScale: 1
+  m_UseContactForce: 0
+  m_UseFriction: 1
+  m_UseBounce: 1
 --- !u!1 &1896407411
 GameObject:
   m_ObjectHideFlags: 0

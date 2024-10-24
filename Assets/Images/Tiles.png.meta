@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tiles_0
+      name: BounceCornerTL
       rect:
         serializedVersion: 2
         x: 0
@@ -136,7 +136,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_1
+      name: BounceCornerTR
       rect:
         serializedVersion: 2
         x: 32
@@ -162,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_2
+      name: BounceInnerTL
       rect:
         serializedVersion: 2
         x: 64
@@ -183,7 +183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_3
+      name: BounceInner
       rect:
         serializedVersion: 2
         x: 96
@@ -204,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_4
+      name: BounceInnerTR
       rect:
         serializedVersion: 2
         x: 128
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_5
+      name: BounceCornerBL
       rect:
         serializedVersion: 2
         x: 0
@@ -251,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_6
+      name: BounceCornerBR
       rect:
         serializedVersion: 2
         x: 32
@@ -277,7 +277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_7
+      name: BounceInnerL
       rect:
         serializedVersion: 2
         x: 64
@@ -298,7 +298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_8
+      name: BounceInnerC
       rect:
         serializedVersion: 2
         x: 96
@@ -319,7 +319,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_9
+      name: BounceInnerR
       rect:
         serializedVersion: 2
         x: 128
@@ -340,7 +340,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_10
+      name: BounceInnerBL
       rect:
         serializedVersion: 2
         x: 64
@@ -361,7 +361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_11
+      name: BounceInnerB
       rect:
         serializedVersion: 2
         x: 96
@@ -382,7 +382,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tiles_12
+      name: BounceInnerBR
       rect:
         serializedVersion: 2
         x: 128
@@ -402,6 +402,156 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BounceThinT
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -6, y: 16}
+        - {x: -16, y: 6}
+        - {x: -16, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 6}
+        - {x: 6, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c68acfea949964d8ad2737074f9621
+      internalID: 1330450036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BounceThinL
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: -6}
+        - {x: -6, y: -16}
+        - {x: 16, y: -16}
+        - {x: 16, y: 16}
+        - {x: -6, y: 16}
+        - {x: -16, y: 6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ecaa93248e653b47b55c24c7cef5702
+      internalID: 1723176819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BounceThinR
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 16, y: 7}
+        - {x: 6, y: 16}
+        - {x: -16, y: 16}
+        - {x: -16, y: -16}
+        - {x: 6, y: -16}
+        - {x: 16, y: -6}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2edb7592817c3441aad3fc10238021a
+      internalID: -850333572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BounceThinB
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -16, y: 16}
+        - {x: -16, y: -6}
+        - {x: -6, y: -16}
+        - {x: 6, y: -16}
+        - {x: 16, y: -6}
+        - {x: 16, y: 16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e9074c9b7d25fe4d81e2743e9f3fb2b
+      internalID: 1399748865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BounceThi
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ea1f9afc022c64f80fec5dcfe149ca
+      internalID: -1213672658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 192
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067669b0f390769428bea99c30922506
+      internalID: -1115082594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -413,19 +563,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tiles_0: 1375430734
-      Tiles_1: 323191778
-      Tiles_10: 617535626
-      Tiles_11: 1111214152
-      Tiles_12: -1783215396
-      Tiles_2: 132169789
-      Tiles_3: 991735623
-      Tiles_4: -1586645885
-      Tiles_5: 1933155344
-      Tiles_6: -1729896755
-      Tiles_7: -2029137700
-      Tiles_8: -1650417422
-      Tiles_9: 656013309
+      BounceCornerBL: 1933155344
+      BounceCornerBR: -1729896755
+      BounceCornerTL: 1375430734
+      BounceCornerTR: 323191778
+      BounceInner: 991735623
+      BounceInnerB: 1111214152
+      BounceInnerBL: 617535626
+      BounceInnerBR: -1783215396
+      BounceInnerC: -1650417422
+      BounceInnerL: -2029137700
+      BounceInnerR: 656013309
+      BounceInnerTL: 132169789
+      BounceInnerTR: -1586645885
+      BounceThi: -1115082594
+      BounceThinB: 1399748865
+      BounceThinL: 1723176819
+      BounceThinR: -850333572
+      BounceThinT: 1330450036
+      Tiles_1: -1213672658
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
