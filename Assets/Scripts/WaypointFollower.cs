@@ -28,8 +28,6 @@ public class WaypointFollower : MonoBehaviour, IResettable
             Debug.LogWarning($"{name} does not have enough waypoints!");
         }
 
-        //if (startingIndex + 1 > waypoints.Length)
-
         Reset();
     }
 
@@ -77,10 +75,11 @@ public class WaypointFollower : MonoBehaviour, IResettable
     }
     private void ChooseNextWaypointBackAndForth()
     {
-        if (_currentWaypoint >= 0 | _currentWaypoint <= waypoints.Length) { //sentinal
-            _goingForward = !_goingForward;
-        }
-        if (_goingForward) _currentWaypoint++; else _currentWaypoint--; //continue
+        if ((_currentWaypoint <= 0 && !_goingForward) || //Sentinal
+            (_currentWaypoint >= (waypoints.Length - 1) && _goingForward))
+                _goingForward = !_goingForward;
+        
+        if (_goingForward) _currentWaypoint++; else _currentWaypoint--; //Continue
     }
     private void ChooseNextWaypointForward()
     {
