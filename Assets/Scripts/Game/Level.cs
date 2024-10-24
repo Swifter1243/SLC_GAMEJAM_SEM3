@@ -16,8 +16,10 @@ public class Level : MonoBehaviour, IResettable
 	public Player playerPrefab;
 	public int bullets;
 
-	private Player _player;
+	public LevelInfo info;
 
+
+	private Player _player;
 	private int _taskGroupsLeft;
 
 	private void Awake()

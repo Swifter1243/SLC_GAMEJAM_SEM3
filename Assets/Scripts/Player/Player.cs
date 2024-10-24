@@ -40,7 +40,7 @@ public class Player : MonoBehaviour, IResettable
 
 	private void Update()
 	{
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.R))
 		{
             _level.Reset();
 		}
