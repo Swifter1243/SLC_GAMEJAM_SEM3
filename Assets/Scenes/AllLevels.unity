@@ -661,7 +661,9 @@ MonoBehaviour:
   - {fileID: 320993070180751489, guid: dc9d277b238807448a0d205e382a96d9, type: 3}
   - {fileID: 320993070180751489, guid: 2e602ca3a6b08bf4ebe3cfc1094f8b00, type: 3}
   - {fileID: 6322347375232455143, guid: 27f102cdd9d355741a873d5b6c59b200, type: 3}
-  currentLevelIndex: 4
+  - {fileID: 6322347375232455143, guid: b062e2b9b0bed3a4487d2ad287e5f67a, type: 3}
+  - {fileID: 320993070180751489, guid: 1856ec6545b0b1d4caecb73200da3934, type: 3}
+  currentLevelIndex: 0
   spacing: 42
   transitionTime: 2
   mainCamera: {fileID: 2140930746}
