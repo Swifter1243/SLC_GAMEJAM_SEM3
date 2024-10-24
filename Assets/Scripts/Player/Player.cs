@@ -54,20 +54,21 @@ public class Player : MonoBehaviour, IResettable
 		}
 
 		UpdateUIScreenPosition();
-	}
 
 		if (animator)
 		{
 			float angle = gun.faceCursor.GetAngle() / (-360); //hacky
 			animator.SetFloat(GUY_ANIM_AIM_INDEX, angle);
 		}
+	}
+
+		
 
 	private void UpdateUIScreenPosition()
 	{
 		UISingleton.playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
 	}
 
-	}
 
 	private void FixedUpdate()
 	{
