@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
         Level level = CreateLevel(currentLevelIndex);
         _lastLevel = level;
         _currentLevel = level;
+        level.StartGameplay();
     }
 
     private Level CreateLevel(int levelIndex)
@@ -45,6 +46,7 @@ public class LevelManager : MonoBehaviour
                 _transitioning = false;
                 mainCamera.transform.position = new Vector3(0, 0, mainCamera.transform.position.z);
                 _currentLevel.transform.position = new Vector2(0, 0);
+                _currentLevel.StartGameplay();
                 Destroy(_lastLevel.gameObject);
             }
         }
@@ -52,7 +54,6 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
-        Debug.Log("hi");
         currentLevelIndex++;
         _lastLevel = _currentLevel;
         _currentLevel = CreateLevel(currentLevelIndex);

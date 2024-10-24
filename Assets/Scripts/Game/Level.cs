@@ -10,35 +10,46 @@ public class Level : MonoBehaviour, IResettable
 	public TaskGroup[] taskGroups;
 
 	public MonoBehaviour[] resetArray;
-	private IResettable[] resetInterfaces;
+	private List<IResettable> _resetInterfaces;
 	public UnityEvent onLevelComplete;
+	public Transform spawnPoint;
+	public Player playerPrefab;
+
+	private Player _player;
 
 	private int _taskGroupsLeft;
 
-	private void Start()
+	private void Awake()
 	{
 		//Kinda cursed???
-		resetInterfaces = resetArray.Cast<Object>().OfType<IResettable>().ToArray();
+		_resetInterfaces = resetArray.OfType<IResettable>().ToList();
 
 		foreach (TaskGroup group in taskGroups)
 		{
 			group.SetGroupManager(this);
 		}
 
-
 		ResetTaskGroups();
 	}
+
+	public void StartGameplay()
+	{
+		_player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+		_player.Initialize(this);
+		_resetInterfaces.Add(_player);
+	}
+
 
 	public void Reset()
 	{
 		ResetTaskGroups();
-		foreach (IResettable resettable in resetInterfaces) resettable.Reset();
+		foreach (IResettable resettable in _resetInterfaces) resettable.Reset();
 	}
 
 	private void ResetTaskGroups()
 	{
 		_taskGroupsLeft = taskGroups.Length;
-		
+
 	}
 
 	public void TaskGroupCompleted(TaskGroup group)
@@ -47,8 +58,15 @@ public class Level : MonoBehaviour, IResettable
 
 		CheckCompletion();
 	}
+
 	private void CheckCompletion()
 	{
-		if (_taskGroupsLeft == 0) onLevelComplete.Invoke();
+		if (_taskGroupsLeft == 0) LevelCompleted();
+	}
+
+	private void LevelCompleted()
+	{
+		onLevelComplete.Invoke();
+		_player.Destroy();
 	}
 }

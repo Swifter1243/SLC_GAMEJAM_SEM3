@@ -6,9 +6,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rb;
+    private Player _player;
+
+    public void Initialize(Player player)
+    {
+        player.bullets.Add(this);
+        _player = player;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        _player.bullets.Remove(this);
         Destroy(gameObject);
     }
 
