@@ -56,13 +56,6 @@ public class Door : Task
 		// TODO: visuals
 	}
 
-	protected override void CompleteTask()
-	{
-		base.CompleteTask();
-
-		//TODO: implement door visuals???
-	}
-
 	private void UnlockLock(Task task)
 	{
 		_doorLocks[task].Open();
