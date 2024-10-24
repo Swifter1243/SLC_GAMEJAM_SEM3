@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Door : Task, IResettable
 {
+	private void Start()
+	{
+		gameObject.SetActive(false);
+	}
+
 	public void Open()
 	{
 		gameObject.SetActive(true); //TODO: visuals

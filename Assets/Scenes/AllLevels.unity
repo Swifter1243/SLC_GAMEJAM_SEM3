@@ -660,7 +660,7 @@ MonoBehaviour:
   - {fileID: 320993070180751489, guid: 3c632358c114e9a4fb017ac081a6bf18, type: 3}
   - {fileID: 320993070180751489, guid: dc9d277b238807448a0d205e382a96d9, type: 3}
   - {fileID: 320993070180751489, guid: 2e602ca3a6b08bf4ebe3cfc1094f8b00, type: 3}
-  currentLevelIndex: 0
+  currentLevelIndex: 5
   spacing: 42
   transitionTime: 2
   mainCamera: {fileID: 2140930746}

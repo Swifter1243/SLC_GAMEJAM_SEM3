@@ -883,13 +883,13 @@ MonoBehaviour:
   onTaskGroupComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2253286944023250573}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 7338554704259981185}
+        m_TargetAssemblyTypeName: Door, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6691,17 +6691,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6845761442263990435, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
   m_PrefabInstance: {fileID: 6079096622136772446}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2253286944023250573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
-  m_PrefabInstance: {fileID: 6079096622136772446}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7338554704259981185 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3569809364611848415, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
   m_PrefabInstance: {fileID: 6079096622136772446}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2253286944023250573}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab9885f972e0de543a0fba9a86266327, type: 3}
