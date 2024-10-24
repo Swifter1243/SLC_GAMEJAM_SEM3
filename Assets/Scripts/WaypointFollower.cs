@@ -21,6 +21,11 @@ public class WaypointFollower : MonoBehaviour, IResettable
 
     private void Start()
     {
+        if (waypoints.Length <= 1)
+        {
+            waypoints = new Transform[2] { transform, transform };
+            Debug.LogWarning($"{name} does not have enough waypoints!");
+        }
         Reset();
     }
 
@@ -35,7 +40,7 @@ public class WaypointFollower : MonoBehaviour, IResettable
             Vector2 a = _lastWaypoint.position;
             Vector2 b = waypoints[_currentWaypoint].position;
 
-            float travelTime = Vector2.Distance(a, b) / travelSpeed;
+            float travelTime = Mathf.Max(Vector2.Distance(a, b), 0.01f) / travelSpeed;
             if (effector) effector.speed = (b - a).x / travelTime;
 
             Coroutine MoveCoroutine = StartCoroutine(TransitionMove(a, b, travelTime));
@@ -63,37 +68,19 @@ public class WaypointFollower : MonoBehaviour, IResettable
 
     private void ChooseNextWaypoint()
     {
-        if (backAndForth)
-        {
-            ChooseNextWaypointBackAndForth();
-        }
-        else
-        {
-            ChooseNextWaypointForward();
-        }
+        if (backAndForth) ChooseNextWaypointBackAndForth();
+        else ChooseNextWaypointForward();
     }
     private void ChooseNextWaypointBackAndForth()
     {
-        if (_goingForward)
-        {
-            _currentWaypoint++;
-            if (_currentWaypoint == waypoints.Length - 1)
-            {
-                _goingForward = false;
-            }
+        if (_currentWaypoint >= 0 | _currentWaypoint <= waypoints.Length) { //sentinal
+            _goingForward = !_goingForward;
         }
-        else
-        {
-            _currentWaypoint--;
-            if (_currentWaypoint == 0)
-            {
-                _goingForward = true;
-            }
-        }
+        if (_goingForward) _currentWaypoint++; else _currentWaypoint--; //continue
     }
     private void ChooseNextWaypointForward()
     {
-        _currentWaypoint = (_currentWaypoint + 1) % waypoints.Length;
+        _currentWaypoint = ++_currentWaypoint % waypoints.Length;
     }
 
 	public void Reset()

@@ -45,7 +45,11 @@ public class Player : MonoBehaviour, IResettable
 		}
 	}
 
-	public void AddBullets(int ammount = 1) => gun.bulletsLeft += ammount;
+	public void AddBullets(int ammount = 1)
+	{
+		gun.bulletsLeft += ammount;
+		UISingleton.Bullets = gun.bulletsLeft;
+	}
 	private void OnFire()
 	{
 		Vector2 toCursor = gun.faceCursor.GetVectorToCursor().normalized;
