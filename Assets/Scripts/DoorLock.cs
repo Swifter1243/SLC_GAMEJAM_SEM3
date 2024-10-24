@@ -14,6 +14,8 @@ public class DoorLock : MonoBehaviour
     private Vector3 _initialPosition;
     private float _animationElapsed = 0;
 
+    private Coroutine lockCoroutine;
+
     private void Awake()
     {
         gameObject.SetActive(false);
@@ -27,13 +29,16 @@ public class DoorLock : MonoBehaviour
 
     public void Open()
     {
+        if (lockCoroutine != null) StopCoroutine(lockCoroutine);
+        lockCoroutine = null;
+
         StartCoroutine(OpenCoroutine());
     }
 
     public void Close()
     {
         gameObject.SetActive(true);
-        StartCoroutine(CloseCoroutine());
+        lockCoroutine = StartCoroutine(CloseCoroutine());
     }
 
     private IEnumerator OpenCoroutine()

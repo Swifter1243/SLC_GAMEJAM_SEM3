@@ -34,7 +34,9 @@ public class Door : Task
 
 	private void CloseLocks()
 	{
-		int index = 0;
+        StopAllCoroutines();
+
+        int index = 0;
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
