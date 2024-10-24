@@ -16,6 +16,11 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Destroy();
+    }
+
+    public void Destroy()
+    {
         _player.bullets.Remove(this);
         Destroy(gameObject);
     }
@@ -26,5 +31,6 @@ public class Bullet : MonoBehaviour
         {
             other.gameObject.GetComponent<TargetTask>().Hit();
         }
+
     }
 }
