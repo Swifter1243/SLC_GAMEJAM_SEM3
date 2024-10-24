@@ -730,6 +730,9 @@ MonoBehaviour:
           m_StringArgument: Door opened.
           m_BoolArgument: 0
         m_CallState: 2
+  onTaskComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6732789686196072984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +762,9 @@ MonoBehaviour:
           m_StringArgument: Level completed!
           m_BoolArgument: 0
         m_CallState: 2
+  onTaskComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8369833423475093763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,6 +6466,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1570788301539880044}
     m_Modifications:
+    - target: {fileID: 3569809364611848415, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: taskGroup
+      value: 
+      objectReference: {fileID: 8133404703683851788}
+    - target: {fileID: 3569809364611848415, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
+      propertyPath: doorLockPrefab
+      value: 
+      objectReference: {fileID: 4806855649664071710, guid: a50bff998b0be81429ace29e09838dd1, type: 3}
     - target: {fileID: 5411077850821640659, guid: 1228bb884a44f9045b4a0e64bda4e6ae, type: 3}
       propertyPath: m_Name
       value: Door

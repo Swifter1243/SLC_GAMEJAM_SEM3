@@ -6,8 +6,8 @@ public class TaskGroup : MonoBehaviour, IResettable
 {
     public Task[] tasks;
     public UnityEvent onTaskGroupComplete;
+    public UnityEvent<Task> onTaskComplete;
     private Level taskGroupManager;
-
 
     private int _tasksLeft;
     
@@ -41,6 +41,7 @@ public class TaskGroup : MonoBehaviour, IResettable
     public void TaskCompleted(Task levelTask)
     {
         _tasksLeft--;
+        onTaskComplete.Invoke(levelTask);
 
         CheckCompletion();
     }

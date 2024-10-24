@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCompleted: 0
+  taskGroup: {fileID: 0}
+  doorLockPrefab: {fileID: 0}
+  lockDelay: 0.4
 --- !u!50 &410579400207619301
 Rigidbody2D:
   serializedVersion: 4
