@@ -18,10 +18,11 @@ public class Player : MonoBehaviour, IResettable
     {
         gun.onFire.AddListener(OnFire);
     }
-
     public void Initialize(Level level)
     {
         _level = level;
+        gun.bulletsLeft = _level.info.bulletCount;
+        UISingleton.Bullets = gun.bulletsLeft; //Kinda want to move this into Gun
     }
 
     private void OnFire()
@@ -45,19 +46,6 @@ public class Player : MonoBehaviour, IResettable
             _level.Reset();
 		}
     }
-
-	//void FixedUpdate()
-	//{
-	//    //if (Input.GetKey(KeyCode.A))
-	//    //{
-	//    //    rb.AddForce(Vector2.left * speed);
-	//    //}
-	//    //else if (Input.GetKey(KeyCode.D))
-	//    //{
-	//    //    rb.AddForce(Vector2.right * speed);
-	//    //}
-	//
-	//}
 
 	public void Die()
     {
@@ -85,5 +73,8 @@ public class Player : MonoBehaviour, IResettable
         transform.position = _level.spawnPoint.position;
         rb.velocity = Vector2.zero;
         ClearBullets();
+
+        gun.bulletsLeft = _level.info.bulletCount;
+        UISingleton.Bullets = gun.bulletsLeft;
     }
 }
