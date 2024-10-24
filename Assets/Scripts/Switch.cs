@@ -17,7 +17,7 @@ public class Switch : MonoBehaviour, IResettable
 
         if (other.gameObject.layer == Constants.LAYER_BULLET)
         {
-            other.gameObject.GetComponent<Bullet>().Destroy();
+            Destroy(other.gameObject);
             TurnOn();
         }
     }

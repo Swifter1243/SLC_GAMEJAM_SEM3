@@ -176,7 +176,7 @@ MonoBehaviour:
   effector: {fileID: 6433382678533543935}
   travelSpeed: 3
   restTime: 1
-  startingIndex: 1
+  startingIndex: 0
   backAndForth: 1
 --- !u!252 &6433382678533543935
 SurfaceEffector2D:
