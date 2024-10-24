@@ -14,7 +14,8 @@ public class Gun : MonoBehaviour
     public float shootForce = 10;
     public int bulletsLeft = 1;
 
-    bool _fired = false;
+    private bool _enabled = true;
+    private bool _fired = false;
 
     private void Update()
     {
@@ -22,6 +23,16 @@ public class Gun : MonoBehaviour
         {
             _fired = true;
         }
+    }
+
+    public void Disable()
+    {
+        _enabled = false;
+    }
+
+    public void Enable()
+    {
+        _enabled = true;
     }
 
 
@@ -36,7 +47,7 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
-        if (bulletsLeft == 0)
+        if (bulletsLeft == 0 || !_enabled)
         {
             return;
         }

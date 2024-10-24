@@ -342,6 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1994501326186173065}
   - component: {fileID: 3398292778377494794}
+  - component: {fileID: 2908938381231743683}
   m_Layer: 5
   m_Name: PlayerDetails
   m_TagString: Untagged
@@ -381,6 +382,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb093b3ab994029ac7e02dfb58e6f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 2908938381231743683}
+  fadeTime: 0.1
+--- !u!225 &2908938381231743683
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6790707836352236289}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7086501720293442463
 GameObject:
   m_ObjectHideFlags: 0
