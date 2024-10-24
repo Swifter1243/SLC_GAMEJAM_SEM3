@@ -13,10 +13,7 @@ public class TaskGroup : MonoBehaviour, IResettable
     
     private void Start()
     {
-        foreach (Task task in tasks)
-        {
-            task.SetTaskManager(this);
-        }
+        foreach (Task task in tasks) task.SetTaskManager(this);
 
         ResetTasks();
         CheckCompletion();
@@ -25,6 +22,7 @@ public class TaskGroup : MonoBehaviour, IResettable
     public void Reset()
     {
         ResetTasks();
+        foreach (Task task in tasks) task.Reset();
         CheckCompletion();
     }
 
