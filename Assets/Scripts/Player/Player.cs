@@ -33,6 +33,10 @@ public class Player : MonoBehaviour, IResettable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.gameObject.layer == Constants.LAYER_PICKUP)
+		{
+            throw new NotImplementedException();
+		}
         if (other.gameObject.layer == Constants.LAYER_HAZARD)
         {
             Die();

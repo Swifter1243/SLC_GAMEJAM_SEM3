@@ -5,4 +5,5 @@
     public const int LAYER_TARGET = 8;
     public const int LAYER_KEY = 9;
     public const int LAYER_HAZARD = 10;
+    public const int LAYER_PICKUP = 11;
 }
