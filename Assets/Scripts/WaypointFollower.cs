@@ -39,30 +39,28 @@ public class WaypointFollower : MonoBehaviour, IResettable
             _lastWaypoint = waypoints[_currentWaypoint];
             ChooseNextWaypoint();
 
-            Vector2 a = _lastWaypoint.position;
-            Vector2 b = waypoints[_currentWaypoint].position;
+            Transform nextWaypoint = waypoints[_currentWaypoint];
 
-            float travelTime = Mathf.Max(Vector2.Distance(a, b), 0.01f) / travelSpeed;
-            if (effector) effector.speed = (b - a).x / travelTime;
+            float travelTime = Mathf.Max(Vector2.Distance(_lastWaypoint.position, nextWaypoint.position), 0.01f) / travelSpeed;
+            if (effector) effector.speed = (nextWaypoint.position - _lastWaypoint.position).x / travelTime;
 
-            Coroutine MoveCoroutine = StartCoroutine(TransitionMove(a, b, travelTime));
+            Coroutine MoveCoroutine = StartCoroutine(TransitionMove(_lastWaypoint, nextWaypoint, travelTime));
             yield return new WaitForSeconds(travelTime);
 
             if (effector) effector.speed = 0;
-            transform.position = b;
+            transform.position = nextWaypoint.position;
             StopCoroutine(MoveCoroutine);
 
             yield return new WaitForSeconds(restTime);
         }
     }
 
-    private IEnumerator TransitionMove(Vector2 a, Vector2 b, float time)
+    private IEnumerator TransitionMove(Transform a, Transform b, float time)
     {
         for (;;) //while true
         {
             _transitionTime += Time.deltaTime;
-            Vector3 nextPosition = Vector2.Lerp(a, b, _transitionTime / time);
-            transform.position = nextPosition;
+            transform.position = Vector2.Lerp(a.position, b.position, _transitionTime / time);
             
             yield return null;
         }
