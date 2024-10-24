@@ -1440,7 +1440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1663378719932233060, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
       propertyPath: travelSpeed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1663378719932233060, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
       propertyPath: startingIndex
@@ -1507,6 +1507,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
+--- !u!114 &5718492628299195728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1663378719932233060, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
+  m_PrefabInstance: {fileID: 6361801342527705140}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c60b8b14253c524ea8eb112019eb104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8121620481152892605 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2953343556809404041, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
@@ -5118,8 +5129,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7182563678751824370, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
       propertyPath: resetArray.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7182563678751824370, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: resetArray.Array.data[3]
+      value: 
+      objectReference: {fileID: 5718492628299195728}
     - target: {fileID: 8490612095989511591, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
       propertyPath: m_Size.y
       value: 57
