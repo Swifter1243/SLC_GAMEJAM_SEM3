@@ -21,11 +21,15 @@ public class WaypointFollower : MonoBehaviour, IResettable
 
     private void Start()
     {
+
         if (waypoints.Length <= 1)
         {
             waypoints = new Transform[2] { transform, transform };
             Debug.LogWarning($"{name} does not have enough waypoints!");
         }
+
+        //if (startingIndex + 1 > waypoints.Length)
+
         Reset();
     }
 
