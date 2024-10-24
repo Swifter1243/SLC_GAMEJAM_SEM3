@@ -38,19 +38,28 @@ public class Player : MonoBehaviour, IResettable
         }
     }
 
-    void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.AddForce(Vector2.left * speed);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rb.AddForce(Vector2.right * speed);
-        }
+	private void Update()
+	{
+        if (Input.GetKeyDown(KeyCode.Q))
+		{
+            _level.Reset();
+		}
     }
 
-    public void Die()
+	//void FixedUpdate()
+	//{
+	//    //if (Input.GetKey(KeyCode.A))
+	//    //{
+	//    //    rb.AddForce(Vector2.left * speed);
+	//    //}
+	//    //else if (Input.GetKey(KeyCode.D))
+	//    //{
+	//    //    rb.AddForce(Vector2.right * speed);
+	//    //}
+	//
+	//}
+
+	public void Die()
     {
         _level.Reset();
     }

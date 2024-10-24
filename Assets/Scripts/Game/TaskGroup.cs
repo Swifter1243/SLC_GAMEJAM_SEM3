@@ -25,6 +25,7 @@ public class TaskGroup : MonoBehaviour, IResettable
     public void Reset()
     {
         ResetTasks();
+        CheckCompletion();
     }
 
     private void ResetTasks()
