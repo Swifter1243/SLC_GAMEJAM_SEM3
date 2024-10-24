@@ -27,13 +27,11 @@ public class DoorLock : MonoBehaviour
 
     public void Open()
     {
-        StopAllCoroutines();
         StartCoroutine(OpenCoroutine());
     }
 
     public void Close()
     {
-        StopAllCoroutines();
         gameObject.SetActive(true);
         StartCoroutine(CloseCoroutine());
     }
