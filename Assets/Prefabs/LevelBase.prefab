@@ -131,6 +131,7 @@ MonoBehaviour:
         m_CallState: 2
   spawnPoint: {fileID: 2723956948765951388}
   playerPrefab: {fileID: 8783857246812536212, guid: ffe6fc97c9c2f844ba9c9257c59cbe7b, type: 3}
+  bullets: 7
 --- !u!1 &6077054559320686397
 GameObject:
   m_ObjectHideFlags: 0
