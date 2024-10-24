@@ -36,11 +36,14 @@ public class Player : MonoBehaviour, IResettable
 		}
 
 	}
+
 	public void Initialize(Level level)
 	{
 		_level = level;
 		gun.bulletsLeft = _level.info.bulletCount;
 		UISingleton.Bullets = gun.bulletsLeft; //Kinda want to move this into Gun
+		UISingleton.OnPlayerSpawned.Invoke();
+		UpdateUIScreenPosition();
 	}
 
 	private void Update()
@@ -50,11 +53,19 @@ public class Player : MonoBehaviour, IResettable
 			_level.Reset();
 		}
 
+		UpdateUIScreenPosition();
+	}
+
 		if (animator)
 		{
 			float angle = gun.faceCursor.GetAngle() / (-360); //hacky
 			animator.SetFloat(GUY_ANIM_AIM_INDEX, angle);
 		}
+
+	private void UpdateUIScreenPosition()
+	{
+		UISingleton.playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+	}
 
 	}
 
@@ -97,6 +108,15 @@ public class Player : MonoBehaviour, IResettable
 
 	public void Die()
 	{
+		rb.simulated = false;
+		UISingleton.OnPlayerDeath.Invoke();
+		StartCoroutine(DeathCoroutine());
+	}
+
+	private IEnumerator DeathCoroutine()
+	{
+		yield return new WaitForSeconds(1f);
+
 		_level.Reset();
 	}
 
@@ -118,6 +138,9 @@ public class Player : MonoBehaviour, IResettable
 
 	public void Reset()
 	{
+		rb.simulated = true;
+		UpdateUIScreenPosition();
+		UISingleton.OnPlayerSpawned.Invoke();
 		transform.position = _level.spawnPoint.position;
 		rb.velocity = Vector2.zero;
 		ClearBullets();
