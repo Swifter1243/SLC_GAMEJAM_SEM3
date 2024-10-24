@@ -38,6 +38,8 @@ public class LevelManager : MonoBehaviour
         {
             _transitionElapsed += Time.deltaTime;
             float t = _transitionElapsed / transitionTime;
+            t = Ease.InOutCubic(t);
+            
             Vector2 a = new Vector3(-spacing, 0, 0);
             Vector2 b = Vector2.zero;
             Vector2 c = new Vector3(spacing, 0, 0);
