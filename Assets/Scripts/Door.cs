@@ -9,11 +9,11 @@ public class Door : Task
 	public TaskGroup taskGroup;
 	public DoorLock doorLockPrefab;
 	public float lockDelay = 0.1f;
-	
+
 	private readonly Dictionary<Task, DoorLock> _doorLocks = new ();
 	private bool _isOpen = false;
-	
-	private void Start()
+
+	public void Initialize()
 	{
 		taskGroup.onTaskComplete.AddListener(UnlockLock);
 
@@ -22,17 +22,17 @@ public class Door : Task
 		{
 			float y = (index + 1f) / (taskGroup.tasks.Length + 1);
 			y *= 2;
-			
+
 			DoorLock doorLock = Instantiate(doorLockPrefab, transform);
 			doorLock.SetInitialPosition(new Vector3(0, y, -1));
 			_doorLocks.Add(task, doorLock);
 			index++;
 		}
-		
-		CloseLocks();
+
+		LockAllLocks();
 	}
 
-	private void CloseLocks()
+	private void LockAllLocks()
 	{
         StopAllCoroutines();
 
@@ -40,16 +40,16 @@ public class Door : Task
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
-			StartCoroutine(CloseLock(doorLock, index * lockDelay));
+			StartCoroutine(Lock(doorLock, index * lockDelay));
 			index++;
 		}
 	}
 
-	private IEnumerator CloseLock(DoorLock doorLock, float delay)
+	private IEnumerator Lock(DoorLock doorLock, float delay)
 	{
 		yield return new WaitForSeconds(delay);
-		
-		doorLock.Close();
+
+		doorLock.Lock();
 	}
 
 	public void Open()
@@ -69,7 +69,7 @@ public class Door : Task
 		_isOpen = false;
 
 		StopAllCoroutines();
-		CloseLocks();
+		LockAllLocks();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collider)
