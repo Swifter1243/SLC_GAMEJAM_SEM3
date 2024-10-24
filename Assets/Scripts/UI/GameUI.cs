@@ -6,25 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public static class UISingleton
-{
-	static private int bullets;
-	static public int Bullets
-	{
-		get { return bullets; }
-		set { bullets = value; OnAmmoChanged.Invoke(); }
-	}
-
-	static public UnityEvent OnAmmoChanged { get; private set; } = new UnityEvent();
-}
-
-
-
 public class GameUI : MonoBehaviour
 {
     public LevelManager levelManager;
     public TMP_Text bulletsText;
     public Button restartButton;
+    public Canvas canvas;
 
     private void Awake()
     {

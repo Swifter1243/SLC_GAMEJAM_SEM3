@@ -18,11 +18,13 @@ public class Player : MonoBehaviour, IResettable
 	{
 		gun.onFire.AddListener(OnFire);
 	}
+
 	public void Initialize(Level level)
 	{
 		_level = level;
 		gun.bulletsLeft = _level.info.bulletCount;
 		UISingleton.Bullets = gun.bulletsLeft; //Kinda want to move this into Gun
+		UISingleton.OnPlayerSpawned.Invoke();
 	}
 
 	private void Update()
@@ -31,6 +33,13 @@ public class Player : MonoBehaviour, IResettable
 		{
 			_level.Reset();
 		}
+
+		UpdateUIScreenPosition();
+	}
+
+	private void UpdateUIScreenPosition()
+	{
+		UISingleton.playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -58,6 +67,15 @@ public class Player : MonoBehaviour, IResettable
 
 	public void Die()
 	{
+		rb.simulated = false;
+		UISingleton.OnPlayerDeath.Invoke();
+		StartCoroutine(DeathCoroutine());
+	}
+
+	private IEnumerator DeathCoroutine()
+	{
+		yield return new WaitForSeconds(1f);
+
 		_level.Reset();
 	}
 
@@ -79,6 +97,9 @@ public class Player : MonoBehaviour, IResettable
 
 	public void Reset()
 	{
+		rb.simulated = true;
+		UISingleton.OnPlayerSpawned.Invoke();
+		UpdateUIScreenPosition();
 		transform.position = _level.spawnPoint.position;
 		rb.velocity = Vector2.zero;
 		ClearBullets();

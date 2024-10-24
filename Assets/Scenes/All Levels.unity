@@ -280,6 +280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8278341804284469475, guid: 26138fba9716534488d2e992147ac9a8, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1980533885}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -353,7 +357,7 @@ MonoBehaviour:
   - {fileID: 320993070180751489, guid: 2e602ca3a6b08bf4ebe3cfc1094f8b00, type: 3}
   - {fileID: 320993070180751489, guid: 8d894636b55c855458891d20f847b69f, type: 3}
   - {fileID: 7541262720941002397, guid: 63b2c5f91ca97574eb4d97dd5d6b818f, type: 3}
-  currentLevelIndex: 2
+  currentLevelIndex: 0
   spacing: 42
   transitionTime: 2
   mainCamera: {fileID: 2140930746}
@@ -414,6 +418,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d3eb40723913974cac17935e0e09420, type: 3}
+--- !u!223 &1980533885 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1697188171068735402, guid: 0278beea39535254f8306b86aabda999, type: 3}
+  m_PrefabInstance: {fileID: 1109166566164318599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &2140930746 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 8810848245636338893, guid: 0d3eb40723913974cac17935e0e09420, type: 3}

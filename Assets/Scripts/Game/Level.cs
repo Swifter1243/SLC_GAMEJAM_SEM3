@@ -69,6 +69,7 @@ public class Level : MonoBehaviour, IResettable
 	private void LevelCompleted()
 	{
 		onLevelComplete.Invoke();
+		UISingleton.OnPlayerDeath.Invoke();
 		_player.Destroy();
 	}
 }
