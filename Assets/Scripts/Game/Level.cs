@@ -14,6 +14,7 @@ public class Level : MonoBehaviour, IResettable
 	public UnityEvent onLevelComplete;
 	public Transform spawnPoint;
 	public Player playerPrefab;
+	public int bullets;
 
 	private Player _player;
 
@@ -36,12 +37,18 @@ public class Level : MonoBehaviour, IResettable
 	{
 		_player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 		_player.Initialize(this);
+		RefillGun();
 		_resetInterfaces.Add(_player);
 	}
 
+	private void RefillGun()
+	{
+		_player.gun.bulletCount = bullets;
+	}
 
 	public void Reset()
 	{
+		RefillGun();
 		ResetTaskGroups();
 		foreach (IResettable resettable in _resetInterfaces) resettable.Reset();
 	}
