@@ -30,6 +30,14 @@ public class Player : MonoBehaviour, IResettable
         rb.velocity -= toCursor * shootForce;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == Constants.LAYER_HAZARD)
+        {
+            Die();
+        }
+    }
+
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A))
@@ -42,12 +50,19 @@ public class Player : MonoBehaviour, IResettable
         }
     }
 
+    public void Die()
+    {
+        _level.Reset();
+    }
+
     private void ClearBullets()
     {
         foreach (Bullet bullet in bullets)
         {
             Destroy(bullet.gameObject);
         }
+
+        bullets.Clear();
     }
 
     public void Destroy()
@@ -59,6 +74,7 @@ public class Player : MonoBehaviour, IResettable
     public void Reset()
     {
         transform.position = _level.spawnPoint.position;
+        rb.velocity = Vector2.zero;
         ClearBullets();
     }
 }

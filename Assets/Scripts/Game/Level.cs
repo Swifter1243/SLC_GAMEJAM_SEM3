@@ -19,7 +19,7 @@ public class Level : MonoBehaviour, IResettable
 
 	private int _taskGroupsLeft;
 
-	private void Start()
+	private void Awake()
 	{
 		//Kinda cursed???
 		_resetInterfaces = resetArray.OfType<IResettable>().ToList();
