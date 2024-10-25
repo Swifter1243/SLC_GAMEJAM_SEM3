@@ -1678,6 +1678,42 @@ PrefabInstance:
       propertyPath: tasks.Array.data[0]
       value: 
       objectReference: {fileID: 8680064930625504944}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 3084133780324126252}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 3e3d11a56b941a44fad73aba6b07ac80, type: 3}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: Door opened.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8133404703683851788, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+      propertyPath: onTaskGroupComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8490612095989511591, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 868
@@ -22713,6 +22749,11 @@ PrefabInstance:
       addedObject: {fileID: 8826723751992850452}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+--- !u!82 &3084133780324126252 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 430312803589854536, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
+  m_PrefabInstance: {fileID: 3401849815771257700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4249502221535393544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1570788301539880044, guid: 8212603c7e80fb547a24692f00d15bd0, type: 3}
