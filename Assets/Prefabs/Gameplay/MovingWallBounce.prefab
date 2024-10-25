@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5212333720323995138}
   - component: {fileID: 8391821687540708121}
   - component: {fileID: 1663378719932233060}
-  - component: {fileID: 6433382678533543935}
   m_Layer: 12
   m_Name: MovingWallBounce
   m_TagString: Untagged
@@ -173,26 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  effector: {fileID: 6433382678533543935}
+  effector: {fileID: 0}
   travelSpeed: 3
   restTime: 1
   startingIndex: 0
   backAndForth: 1
---- !u!252 &6433382678533543935
-SurfaceEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5582211286535323355}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Speed: 1
-  m_SpeedVariation: 0
-  m_ForceScale: 1
-  m_UseContactForce: 0
-  m_UseFriction: 1
-  m_UseBounce: 1
+  moving: 0

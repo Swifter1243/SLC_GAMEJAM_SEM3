@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5212333720323995138}
   - component: {fileID: 8391821687540708121}
   - component: {fileID: 1663378719932233060}
-  - component: {fileID: 6433382678533543935}
   m_Layer: 13
   m_Name: MovingWallNonBounce
   m_TagString: Untagged
@@ -97,7 +96,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5582211286535323355}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 068cd6ed33a1de84f8e15485e5abb8e3, type: 2}
+  m_Material: {fileID: 6200000, guid: c6e0342371f44764c8aed88b5634eab5, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -173,26 +172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  effector: {fileID: 6433382678533543935}
+  effector: {fileID: 0}
   travelSpeed: 3
   restTime: 1
   startingIndex: 0
   backAndForth: 1
---- !u!252 &6433382678533543935
-SurfaceEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5582211286535323355}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Speed: 1
-  m_SpeedVariation: 0
-  m_ForceScale: 1
-  m_UseContactForce: 0
-  m_UseFriction: 1
-  m_UseBounce: 1
+  moving: 0
