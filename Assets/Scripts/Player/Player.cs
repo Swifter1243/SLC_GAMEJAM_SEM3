@@ -19,6 +19,7 @@ public class Player : MonoBehaviour, IResettable
 	public AudioSource source;
 	public AudioClip clipBounce;
 	public AudioClip clipNonBounce;
+	public AudioClip clipShoot;
 
 	private Level _level;
 
@@ -137,6 +138,7 @@ public class Player : MonoBehaviour, IResettable
 	{
 		Vector2 toCursor = gun.faceCursor.GetVectorToCursor().normalized;
 		rb.velocity -= toCursor * shootForce;
+		source.PlayOneShot(clipShoot);
 	}
 
 	public void Die()
