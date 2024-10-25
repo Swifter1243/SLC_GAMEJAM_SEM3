@@ -137,7 +137,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 2723956948765951388}
   playerPrefab: {fileID: 8783857246812536212, guid: ffe6fc97c9c2f844ba9c9257c59cbe7b, type: 3}
   door: {fileID: 7338554704259981185}
-  audioSource: {fileID: 5599252167072043791}
+  audioSource: {fileID: 0}
   info:
     bulletCount: 2
 --- !u!1 &5238282347729580828
@@ -181,7 +181,7 @@ AudioSource:
   m_GameObject: {fileID: 5238282347729580828}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7828341847865926536, guid: 5e5b92f687d95b64a993cc593b666a40, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
