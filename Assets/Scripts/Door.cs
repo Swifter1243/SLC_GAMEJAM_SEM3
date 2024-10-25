@@ -62,13 +62,14 @@ public class Door : Task
 
 	private void LockAllLocksInstantly()
 	{
-		int index = 0;
+		bool haventPlayedSoundYet = true;
+
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
 			doorLock.unlocked = false;
-			StartCoroutine(Lock(doorLock, 0, false));
-			index++;
+			StartCoroutine(Lock(doorLock, 0, haventPlayedSoundYet));
+			haventPlayedSoundYet = false;
 		}
 	}
 
