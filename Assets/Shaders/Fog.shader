@@ -23,26 +23,14 @@ Shader "Unlit/Fog"
 
             #include "UnityCG.cginc"
 
-            struct appdata
+            float4 vert (float4 vertex : POSITION) : SV_POSITION
             {
-                float4 vertex : POSITION;
-            };
-
-            struct v2f
-            {
-                float4 vertex : SV_POSITION;
-            };
-
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                return o;
+                return UnityObjectToClipPos(vertex);
             }
 
             float4 _Color;
 
-            fixed4 frag (v2f i) : SV_Target
+            fixed4 frag () : SV_Target
             {
                 return _Color;
             }
