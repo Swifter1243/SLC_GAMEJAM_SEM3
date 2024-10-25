@@ -25,7 +25,7 @@ public class Door : Task
 	private float _openTime = 0;
 
 
-	public void Initialize(bool isFirst = false)
+	public void Initialize()
 	{
 		taskGroup.onTaskComplete.AddListener(UnlockLock);
 
@@ -43,10 +43,10 @@ public class Door : Task
 			index++;
 		}
 
-		LockAllLocks(isFirst);
+		LockAllLocksSlowly();
 	}
 
-	private void LockAllLocks(bool isFirst = false)
+	private void LockAllLocksSlowly()
 	{
         StopAllCoroutines();
 
@@ -54,8 +54,22 @@ public class Door : Task
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
-			StartCoroutine(Lock(doorLock, index * lockDelay, isFirst));
+			doorLock.unlocked = false;
+			StartCoroutine(Lock(doorLock, index * lockDelay, true));
 			index++;
+		}
+	}
+
+	private void LockAllLocksInstantly()
+	{
+		bool haventPlayedSoundYet = true;
+
+		foreach (DoorLock doorLock in _doorLocks.Values)
+		{
+			doorLock.gameObject.SetActive(false);
+			doorLock.unlocked = false;
+			StartCoroutine(Lock(doorLock, 0, haventPlayedSoundYet));
+			haventPlayedSoundYet = false;
 		}
 	}
 
@@ -63,12 +77,13 @@ public class Door : Task
 	{
 		yield return new WaitForSeconds(delay);
 
-		if (isPlayingSound)
+		if (isPlayingSound && !doorLock.unlocked)
 		{
 			sourceLock.Stop();
 			sourceLock.pitch = 1 + delay * AUDIO_DELAY_PITCH_COEF;
 			sourceLock.Play();
 		}
+
 		doorLock.Lock();
 	}
 
@@ -87,7 +102,7 @@ public class Door : Task
 
 	private void UnlockLock(Task task)
 	{
-		_doorLocks[task].Open();
+		_doorLocks[task].Unlock();
 	}
 
 	public override void Reset()
@@ -97,7 +112,7 @@ public class Door : Task
 		UpdateVisuals();
 
 		StopAllCoroutines();
-		LockAllLocks();
+		LockAllLocksInstantly();
 	}
 
 	private void Update()

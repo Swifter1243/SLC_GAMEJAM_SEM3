@@ -12,4 +12,9 @@ public class Ease
     {
         return Mathf.Approximately(x, 1.0f) ? 1 : 1 - Mathf.Pow(2, -10 * x);
     }
+
+    public static float InQuint(float x)
+    {
+        return x * x * x * x * x;
+    }
 }

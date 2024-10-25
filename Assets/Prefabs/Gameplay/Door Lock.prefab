@@ -220,6 +220,7 @@ MonoBehaviour:
   shakeStrength: 0.1
   lockStartScale: 1.3
   lockRotationRange: 10
+  destroyParticles: {fileID: 5282245995702932094, guid: 177af13f675510b49b14d9db8a77eced, type: 3}
 --- !u!1 &4749117220523809358
 GameObject:
   m_ObjectHideFlags: 0

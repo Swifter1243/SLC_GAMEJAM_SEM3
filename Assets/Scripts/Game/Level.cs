@@ -12,6 +12,7 @@ public class Level : MonoBehaviour, IResettable
 	public MonoBehaviour[] resetArray;
 	private List<IResettable> _resetInterfaces;
 	public UnityEvent onLevelComplete;
+	public UnityEvent onGameplayStarted;
 	public Transform spawnPoint;
 	public Player playerPrefab;
 	public Door door;
@@ -41,8 +42,9 @@ public class Level : MonoBehaviour, IResettable
 		UISingleton.maxBullets = info.bulletCount;
 		_player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 		_player.Initialize(this);
-		door.Initialize(true);
+		door.Initialize();
 		_resetInterfaces.Add(_player);
+		onGameplayStarted.Invoke();
 	}
 
 	public void Reset()

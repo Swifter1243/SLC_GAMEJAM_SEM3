@@ -13,7 +13,8 @@ public class WaypointFollower : MonoBehaviour, IResettable
     public float restTime = 1;
     public int startingIndex = 0;
     public bool backAndForth = false;
-    
+    public bool moving = false;
+
     private int _currentWaypoint = 0;
     private float _transitionTime = 0;
     private bool _goingForward = true;
@@ -21,14 +22,11 @@ public class WaypointFollower : MonoBehaviour, IResettable
 
     private void Start()
     {
-
         if (waypoints.Length <= 1)
         {
             waypoints = new Transform[2] { transform, transform };
             Debug.LogWarning($"{name} does not have enough waypoints!");
         }
-
-        Reset();
     }
 
     private IEnumerator TransitionSwitch()
@@ -44,12 +42,12 @@ public class WaypointFollower : MonoBehaviour, IResettable
             float travelTime = Mathf.Max(Vector2.Distance(_lastWaypoint.position, nextWaypoint.position), 0.01f) / travelSpeed;
             if (effector) effector.speed = (nextWaypoint.position - _lastWaypoint.position).x / travelTime;
 
-            Coroutine MoveCoroutine = StartCoroutine(TransitionMove(_lastWaypoint, nextWaypoint, travelTime));
+            Coroutine moveCoroutine = StartCoroutine(TransitionMove(_lastWaypoint, nextWaypoint, travelTime));
             yield return new WaitForSeconds(travelTime);
 
             if (effector) effector.speed = 0;
             transform.position = nextWaypoint.position;
-            StopCoroutine(MoveCoroutine);
+            StopCoroutine(moveCoroutine);
 
             yield return new WaitForSeconds(restTime);
         }
@@ -61,7 +59,7 @@ public class WaypointFollower : MonoBehaviour, IResettable
         {
             _transitionTime += Time.deltaTime;
             transform.position = Vector2.Lerp(a.position, b.position, _transitionTime / time);
-            
+
             yield return null;
         }
     }
@@ -75,8 +73,8 @@ public class WaypointFollower : MonoBehaviour, IResettable
     {
         if ((_currentWaypoint <= 0 && !_goingForward) || //Sentinal
             (_currentWaypoint >= (waypoints.Length - 1) && _goingForward))
-                _goingForward = !_goingForward;
-        
+            _goingForward = !_goingForward;
+
         if (_goingForward) _currentWaypoint++; else _currentWaypoint--; //Continue
     }
     private void ChooseNextWaypointForward()
@@ -94,5 +92,11 @@ public class WaypointFollower : MonoBehaviour, IResettable
         transform.position = waypoints[_currentWaypoint].position;
 
         StartCoroutine(TransitionSwitch());
+    }
+
+    public void StartMoving()
+    {
+        moving = true;
+        Reset();
     }
 }

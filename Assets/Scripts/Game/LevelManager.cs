@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-200)]
 public class LevelManager : MonoBehaviour
@@ -9,10 +10,14 @@ public class LevelManager : MonoBehaviour
     public int currentLevelIndex = 0;
     public float spacing = 42;
     public float transitionTime = 2;
+    public Camera mainCamera;
+    public float outroTime = 4;
 
     private Level _lastLevel;
     private Level _currentLevel;
     private float _transitionElapsed = 0;
+    private float _lastCameraSize = 0;
+    private Vector3 _lastCameraPosition;
 
     private void Start()
     {
@@ -65,11 +70,48 @@ public class LevelManager : MonoBehaviour
 
     public void NextLevel()
     {
+        if (currentLevelIndex == levels.Length - 1)
+        {
+            StartCoroutine(OutroRoutine());
+            return;
+        }
+
         currentLevelIndex++;
         _lastLevel = _currentLevel;
         _currentLevel = CreateLevel(currentLevelIndex);
         _currentLevel.transform.position = new Vector3(spacing, 0, 0);
 
         StartCoroutine(TransitionUpdate());
+    }
+
+    public IEnumerator OutroRoutine()
+    {
+        _transitionElapsed = 0;
+        _lastCameraSize = mainCamera.orthographicSize;
+        _lastCameraPosition = mainCamera.transform.position;
+
+        while (true)
+        {
+            _transitionElapsed += Time.deltaTime;
+
+            if (_transitionElapsed >= outroTime)
+            {
+                Destroy(gameObject);
+                SceneManager.LoadScene(2);
+                break;
+            }
+
+            float t = _transitionElapsed / outroTime;
+            float t2 = Ease.InQuint(t);
+
+            float size = Mathf.Lerp(_lastCameraSize, 0, t2);
+            mainCamera.orthographicSize = size;
+            Vector3 targetPosition = _currentLevel.door.transform.position + new Vector3(0, 1, 0);
+            targetPosition.z = _lastCameraPosition.z;
+            Vector3 pos = Vector3.Lerp(_lastCameraPosition, targetPosition, t);
+            mainCamera.transform.position = pos;
+
+            yield return null;
+        }
     }
 }
