@@ -15,7 +15,6 @@ public class Player : MonoBehaviour, IResettable
 	public float shootForce;
 
 	private Level _level;
-	private Camera _camera;
 
 	private const float GUY_ANIM_MOVE_SCALE = 0.2f;
 
@@ -30,12 +29,11 @@ public class Player : MonoBehaviour, IResettable
 
 	private void Start()
 	{
-		_camera = Camera.main;
 		gun.onFire.AddListener(OnFire);
 
 		if (animator)
 		{
-			
+
 		}
 
 	}
@@ -65,14 +63,11 @@ public class Player : MonoBehaviour, IResettable
 		}
 	}
 
-		
+
 
 	private void UpdateUIScreenPosition()
 	{
-		if (_camera)
-		{
-			UISingleton.playerScreenPosition = _camera.WorldToScreenPoint(transform.position);
-		}
+		UISingleton.playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
 	}
 
 

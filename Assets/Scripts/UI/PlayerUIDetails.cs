@@ -14,7 +14,6 @@ public class PlayerUIDetails : MonoBehaviour
     {
         UISingleton.OnPlayerDeath.AddListener(OnPlayerDeath);
         UISingleton.OnPlayerSpawned.AddListener(OnPlayerSpawned);
-        StartCoroutine(ShowCoroutine());
     }
 
     private void OnPlayerSpawned()
