@@ -1,20 +1,35 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(AudioSource))]
 public class KeyTask : Task, IResettable
 {
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private Collider2D trigger;
+    private AudioSource source;
+
+    private void Start()
+    {
+        trigger = GetComponent<Collider2D>();
+        source = GetComponent<AudioSource>();
+    }
+	private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == Constants.LAYER_PLAYER)
         {
-            gameObject.SetActive(false);
+            trigger.enabled = false;
+            foreach (Transform child in transform) child.gameObject.SetActive(false);
+
+            source.Stop();
+            source.Play();
+
             CompleteTask();
         }
     }
 
     public override void Reset()
     {
-        gameObject.SetActive(true);
+        trigger.enabled = true;
+        foreach (Transform child in transform) child.gameObject.SetActive(true);
     }
 }

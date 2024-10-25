@@ -59,6 +59,7 @@ MonoBehaviour:
   closedVisuals: {fileID: 5735272153791849962}
   openVisuals: {fileID: 9188090564456416974}
   sourceLock: {fileID: 5883263641070588438}
+  clipOpen: {fileID: 8300000, guid: 3e3d11a56b941a44fad73aba6b07ac80, type: 3}
 --- !u!50 &410579400207619301
 Rigidbody2D:
   serializedVersion: 4
