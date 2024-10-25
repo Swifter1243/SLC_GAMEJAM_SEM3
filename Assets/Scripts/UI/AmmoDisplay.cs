@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class AmmoDisplay : MonoBehaviour
 {
@@ -15,12 +16,20 @@ public class AmmoDisplay : MonoBehaviour
     public Color fullColor;
     public Color emptyColor;
 
+    public float shakeAmount = 1;
+    public float shakeDuration = 1;
+    public float shakeScale = 1;
+
     private RectTransform _rt;
+
+    private float _animationElapsed;
+    private Vector3 _initialPosition;
 
     private void Awake()
     {
         _rt = GetComponent<RectTransform>();
         UISingleton.OnAmmoChanged.AddListener(GenerateSplits);
+        _initialPosition = transform.localPosition;
     }
 
     public void GenerateSplits()
@@ -64,6 +73,41 @@ public class AmmoDisplay : MonoBehaviour
         {
             Image image = splitImages[i];
             image.color = i < UISingleton.Bullets ? fullColor : emptyColor;
+        }
+
+        StopAllCoroutines();
+        StartCoroutine(ShakeCoroutine());
+    }
+
+    private IEnumerator ShakeCoroutine()
+    {
+        _animationElapsed = 0;
+
+        while (true)
+        {
+            _animationElapsed += Time.deltaTime;
+
+            float t = _animationElapsed / shakeDuration;
+
+            float randomRange = (1 - t) * shakeAmount;
+            Vector3 randomPos = new(
+                Random.Range(-randomRange, randomRange),
+                Random.Range(-randomRange, randomRange),
+                0);
+            transform.localPosition = _initialPosition + randomPos;
+
+            float s = Mathf.Lerp(shakeScale, 1, t);
+            transform.localScale = new Vector3(s, s, 1);
+
+            if (_animationElapsed >= shakeDuration)
+            {
+                transform.localPosition = _initialPosition;
+                transform.localRotation = Quaternion.identity;
+                transform.localScale = Vector3.one;
+                break;
+            }
+
+            yield return null;
         }
     }
 }
