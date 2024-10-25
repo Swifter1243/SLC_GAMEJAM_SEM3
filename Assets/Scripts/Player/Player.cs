@@ -19,6 +19,7 @@ public class Player : MonoBehaviour, IResettable
 	public AudioClip clipBounce;
 	public AudioClip clipNonBounce;
 	public AudioClip clipShoot;
+	public AudioClip clipReset;
 
 	private Level _level;
 
@@ -187,5 +188,6 @@ public class Player : MonoBehaviour, IResettable
 		UISingleton.Bullets = gun.bulletsLeft;
 
 		if (animator) animator.SetTrigger(GUY_ANIM_RESET_INDEX);
+		_level.audioSource.PlayOneShot(clipReset);
 	}
 }
