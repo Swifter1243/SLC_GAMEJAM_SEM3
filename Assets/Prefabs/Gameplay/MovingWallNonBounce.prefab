@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8391821687540708121}
   - component: {fileID: 1663378719932233060}
   - component: {fileID: 6433382678533543935}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MovingWallNonBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -149,12 +149,12 @@ GameObject:
   - component: {fileID: 4466719909492421092}
   - component: {fileID: 5402927493545701149}
   - component: {fileID: 5381671807251738101}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: NonBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3000075207272867409
 Transform:
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 2900338596758122996}
   - component: {fileID: 8720430561364452495}
   - component: {fileID: 2516038749847914129}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bouncy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

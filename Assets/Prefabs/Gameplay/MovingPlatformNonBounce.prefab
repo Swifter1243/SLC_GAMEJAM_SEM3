@@ -58,7 +58,11 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: c6e0342371f44764c8aed88b5634eab5, type: 2}
     - target: {fileID: 5582211286535323355, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
       propertyPath: m_Name
-      value: PlatformNonBounce
+      value: MovingPlatformNonBounce
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582211286535323355, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8391821687540708121, guid: 2b54b33ef51e1be4b9cc4b678bab84e0, type: 3}
       propertyPath: m_Material
