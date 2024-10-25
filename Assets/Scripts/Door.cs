@@ -25,7 +25,7 @@ public class Door : Task
 	private float _openTime = 0;
 
 
-	public void Initialize(bool isFirst = false)
+	public void Initialize()
 	{
 		taskGroup.onTaskComplete.AddListener(UnlockLock);
 
@@ -43,10 +43,10 @@ public class Door : Task
 			index++;
 		}
 
-		LockAllLocks(isFirst);
+		LockAllLocksSlowly();
 	}
 
-	private void LockAllLocks(bool isFirst = false)
+	private void LockAllLocksSlowly()
 	{
         StopAllCoroutines();
 
@@ -55,7 +55,19 @@ public class Door : Task
 		{
 			doorLock.gameObject.SetActive(false);
 			doorLock.unlocked = false;
-			StartCoroutine(Lock(doorLock, index * lockDelay, isFirst));
+			StartCoroutine(Lock(doorLock, index * lockDelay, true));
+			index++;
+		}
+	}
+
+	private void LockAllLocksInstantly()
+	{
+		int index = 0;
+		foreach (DoorLock doorLock in _doorLocks.Values)
+		{
+			doorLock.gameObject.SetActive(false);
+			doorLock.unlocked = false;
+			StartCoroutine(Lock(doorLock, 0, false));
 			index++;
 		}
 	}
@@ -99,7 +111,7 @@ public class Door : Task
 		UpdateVisuals();
 
 		StopAllCoroutines();
-		LockAllLocks();
+		LockAllLocksInstantly();
 	}
 
 	private void Update()
