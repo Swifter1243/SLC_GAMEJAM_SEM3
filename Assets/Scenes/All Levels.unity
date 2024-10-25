@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2510001}
   m_Layer: 0
   m_Name: TestKeybinds
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1534,7 +1534,6 @@ MonoBehaviour:
   - {fileID: 320993070180751489, guid: c1fd42a22f8697a42a56d9e7e3698f88, type: 3}
   - {fileID: 320993070180751489, guid: 3be418ca66616dc4d92012df4d42419e, type: 3}
   - {fileID: 320993070180751489, guid: c0d32daaa8bdcb342a25ce6b351ea516, type: 3}
-  - {fileID: 320993070180751489, guid: f8fda07661f3b7645ac1dbbe80412276, type: 3}
   - {fileID: 320993070180751489, guid: dc9d277b238807448a0d205e382a96d9, type: 3}
   - {fileID: 6303569851861083044, guid: caac8e92aeff00b4bb6b4e9f12522dde, type: 3}
   - {fileID: 6303569851861083044, guid: 6c6608fc64bc39341aa5be06289931ee, type: 3}

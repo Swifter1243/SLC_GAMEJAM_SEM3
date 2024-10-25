@@ -20,22 +20,18 @@ public class Player : MonoBehaviour, IResettable
 
 	private const string GUY_ANIM_AIM_NAME = "AimDir";
 	private const string GUY_ANIM_MOVE_NAME = "MoveDir";
+	private const string GUY_ANIM_RESET_NAME = "Reset";
 	private const int GUY_ANIM_MOVE_LAYER = 1;
 
 	private readonly int GUY_ANIM_AIM_INDEX = Animator.StringToHash(GUY_ANIM_AIM_NAME);
 	private readonly int GUY_ANIM_MOVE_INDEX = Animator.StringToHash(GUY_ANIM_MOVE_NAME);
+	private readonly int GUY_ANIM_RESET_INDEX = Animator.StringToHash(GUY_ANIM_RESET_NAME);
 
 	private int animMoveParameter;
 
 	private void Start()
 	{
 		gun.onFire.AddListener(OnFire);
-
-		if (animator)
-		{
-
-		}
-
 	}
 
 	public void Initialize(Level level)
@@ -152,5 +148,7 @@ public class Player : MonoBehaviour, IResettable
 
 		gun.bulletsLeft = _level.info.bulletCount;
 		UISingleton.Bullets = gun.bulletsLeft;
+
+		if (animator) animator.SetTrigger(GUY_ANIM_RESET_INDEX);
 	}
 }
