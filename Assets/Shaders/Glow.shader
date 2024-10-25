@@ -42,6 +42,7 @@ Shader "Unlit/Glow"
             float _RotateSpeed;
             float _ShrinkSize;
             float _ShrinkPeriod;
+            float _Opacity;
 
             v2f vert (appdata v)
             {
