@@ -54,6 +54,7 @@ public class Door : Task
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
+			doorLock.unlocked = false;
 			StartCoroutine(Lock(doorLock, index * lockDelay, isFirst));
 			index++;
 		}
