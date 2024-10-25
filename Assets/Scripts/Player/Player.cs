@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Rigidbody),typeof(Collider),typeof(AudioSource))]
 public class Player : MonoBehaviour, IResettable
 {
 	public Rigidbody2D rb;
@@ -13,6 +15,10 @@ public class Player : MonoBehaviour, IResettable
 
 	public float speed;
 	public float shootForce;
+
+	public AudioSource source;
+	public AudioClip clipBounce;
+	public AudioClip clipNonBounce;
 
 	private Level _level;
 
@@ -28,6 +34,8 @@ public class Player : MonoBehaviour, IResettable
 	private readonly int GUY_ANIM_RESET_INDEX = Animator.StringToHash(GUY_ANIM_RESET_NAME);
 
 	private int animMoveParameter;
+
+	const float AUDIO_PHYS_MIN_VELOCITY = 0.1f;
 
 	private void Start()
 	{
@@ -92,6 +100,33 @@ public class Player : MonoBehaviour, IResettable
 			Die();
 		}
 	}
+
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.relativeVelocity.sqrMagnitude > AUDIO_PHYS_MIN_VELOCITY)
+		{
+			switch (collision.gameObject.layer)
+			{
+				case Constants.LAYER_WORLD_BOUNCY:
+					{
+						source.PlayOneShot(clipBounce);
+						break;
+					}
+				case Constants.LAYER_WORLD_NONBOUNCE:
+					{
+						source.PlayOneShot(clipNonBounce);
+						break;
+					}
+				default:
+					{
+						break;
+					}
+
+			}
+		}
+	}
+
 
 	public void AddBullets(int ammount = 1)
 	{
