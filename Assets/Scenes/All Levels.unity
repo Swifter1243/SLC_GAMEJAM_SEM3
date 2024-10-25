@@ -1527,8 +1527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - {fileID: 320993070180751489, guid: f9da07307b5e6ce47b88acf88b8df34f, type: 3}
   - {fileID: 320993070180751489, guid: dc9d277b238807448a0d205e382a96d9, type: 3}
+  - {fileID: 320993070180751489, guid: f9da07307b5e6ce47b88acf88b8df34f, type: 3}
   - {fileID: 4110115495648864144, guid: 6f7ec665da6f2604a908a86725343760, type: 3}
   - {fileID: 320993070180751489, guid: 1856ec6545b0b1d4caecb73200da3934, type: 3}
   - {fileID: 4110115495648864144, guid: 868ffd082db4eeb4cb9dae9500b69f2c, type: 3}
@@ -1547,7 +1547,6 @@ MonoBehaviour:
   currentLevelIndex: 0
   spacing: 42
   transitionTime: 2
-  mainCamera: {fileID: 2140930746}
 --- !u!1001 &1567488470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25196,11 +25195,6 @@ Transform:
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1697188171068735402, guid: 0278beea39535254f8306b86aabda999, type: 3}
   m_PrefabInstance: {fileID: 1109166566164318599}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &2140930746 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 8810848245636338893, guid: 0d3eb40723913974cac17935e0e09420, type: 3}
-  m_PrefabInstance: {fileID: 1567488470}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1109166566164318599
 PrefabInstance:
