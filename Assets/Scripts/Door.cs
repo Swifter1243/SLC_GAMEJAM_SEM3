@@ -24,8 +24,8 @@ public class Door : Task
 	public void Initialize()
 	{
 		taskGroup.onTaskComplete.AddListener(UnlockLock);
-		openVisuals.SetActive(false);
-		closedVisuals.SetActive(true);
+
+		UpdateVisuals();
 
 		int index = 0;
 		foreach (Task task in taskGroup.tasks)
@@ -66,8 +66,13 @@ public class Door : Task
 	{
 		_isOpen = true;
 		_openTime = 0;
-		openVisuals.SetActive(true);
-		closedVisuals.SetActive(false);
+		UpdateVisuals();
+	}
+
+	private void UpdateVisuals()
+	{
+		openVisuals.SetActive(_isOpen);
+		closedVisuals.SetActive(!_isOpen);
 	}
 
 	private void UnlockLock(Task task)
@@ -79,8 +84,7 @@ public class Door : Task
 	{
 		base.Reset();
 		_isOpen = false;
-		openVisuals.SetActive(false);
-		closedVisuals.SetActive(true);
+		UpdateVisuals();
 
 		StopAllCoroutines();
 		LockAllLocks();
