@@ -32,6 +32,7 @@ public class DoorLock : MonoBehaviour
         if (lockCoroutine != null) StopCoroutine(lockCoroutine);
         lockCoroutine = null;
 
+        gameObject.SetActive(true);
         StartCoroutine(OpenCoroutine());
     }
 
