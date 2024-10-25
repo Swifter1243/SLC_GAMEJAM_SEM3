@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7973975498005245325}
   destroyAfterSeconds: 5
+  particlePrefab: {fileID: 5282245995702932094, guid: 678ceb72d9c9c8e4699ec613d2f2503b, type: 3}
 --- !u!1001 &2125233824953258896
 PrefabInstance:
   m_ObjectHideFlags: 0
