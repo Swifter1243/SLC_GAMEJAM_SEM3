@@ -12,12 +12,14 @@ public class LevelManager : MonoBehaviour
     public float transitionTime = 2;
     public Camera mainCamera;
     public float outroTime = 4;
+    public AudioSource musicSource;
 
     private Level _lastLevel;
     private Level _currentLevel;
     private float _transitionElapsed = 0;
     private float _lastCameraSize = 0;
     private Vector3 _lastCameraPosition;
+    private float _lastMusicSourceVolume;
 
     private void Start()
     {
@@ -89,6 +91,7 @@ public class LevelManager : MonoBehaviour
         _transitionElapsed = 0;
         _lastCameraSize = mainCamera.orthographicSize;
         _lastCameraPosition = mainCamera.transform.position;
+        _lastMusicSourceVolume = musicSource.volume;
 
         while (true)
         {
@@ -98,6 +101,7 @@ public class LevelManager : MonoBehaviour
             {
                 Destroy(gameObject);
                 SceneManager.LoadScene(2);
+                musicSource.volume = 0;
                 break;
             }
 
@@ -110,6 +114,7 @@ public class LevelManager : MonoBehaviour
             targetPosition.z = _lastCameraPosition.z;
             Vector3 pos = Vector3.Lerp(_lastCameraPosition, targetPosition, t);
             mainCamera.transform.position = pos;
+            musicSource.volume = Mathf.Lerp(_lastMusicSourceVolume, 0, t);
 
             yield return null;
         }
