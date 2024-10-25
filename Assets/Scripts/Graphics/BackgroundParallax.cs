@@ -18,7 +18,8 @@ public class BackgroundParallax : MonoBehaviour
             float dist = parallaxAmount - distance * i;
             float x = Mathf.Sin(Time.time * periodX) * dist;
             float y = Mathf.Cos(Time.time * periodY) * dist;
-            backgroundParallaxObjects[i].position = new Vector3(x, y, 0);
+            Transform obj = backgroundParallaxObjects[i];
+            obj.position = new Vector3(x, y, obj.position.z);
         }
     }
 }
