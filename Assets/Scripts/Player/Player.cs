@@ -44,7 +44,6 @@ public class Player : MonoBehaviour, IResettable
 		gun.bulletsLeft = _level.info.bulletCount;
 		UISingleton.Bullets = gun.bulletsLeft; //Kinda want to move this into Gun
 		UpdateUIScreenPosition();
-		Debug.Log("Player Initialize: " + UISingleton.playerScreenPosition);
 		UISingleton.OnPlayerSpawned.Invoke();
 	}
 
