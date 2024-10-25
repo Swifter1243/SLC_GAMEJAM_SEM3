@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2510001}
   m_Layer: 0
   m_Name: TestKeybinds
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -346,7 +346,6 @@ MonoBehaviour:
   - {fileID: 320993070180751489, guid: c1fd42a22f8697a42a56d9e7e3698f88, type: 3}
   - {fileID: 320993070180751489, guid: 3be418ca66616dc4d92012df4d42419e, type: 3}
   - {fileID: 320993070180751489, guid: c0d32daaa8bdcb342a25ce6b351ea516, type: 3}
-  - {fileID: 320993070180751489, guid: f8fda07661f3b7645ac1dbbe80412276, type: 3}
   - {fileID: 320993070180751489, guid: dc9d277b238807448a0d205e382a96d9, type: 3}
   - {fileID: 6303569851861083044, guid: caac8e92aeff00b4bb6b4e9f12522dde, type: 3}
   - {fileID: 6303569851861083044, guid: 6c6608fc64bc39341aa5be06289931ee, type: 3}
@@ -24154,6 +24153,26 @@ PrefabInstance:
     - target: {fileID: 2985944959897637631, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857967844196852987, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[5].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857967844196852987, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[6].m_Data
+      value: 
+      objectReference: {fileID: 132169789, guid: 53905d9465c762f4f8162c52284e3a20, type: 3}
+    - target: {fileID: 6857967844196852987, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[5].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857967844196852987, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[6].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857967844196852987, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
+      propertyPath: m_Tiles.Array.data[99].second.m_TileSpriteIndex
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7823481398425473919, guid: 1c19d76a9ee4c3e45b5ebb599a716795, type: 3}
       propertyPath: m_LocalPosition.x
