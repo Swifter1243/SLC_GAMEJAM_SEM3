@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DoorLock : MonoBehaviour
@@ -10,11 +11,11 @@ public class DoorLock : MonoBehaviour
     public float shakeStrength = 1;
     public float lockStartScale = 1.3f;
     public float lockRotationRange = 30f;
+    public GameObject destroyParticles;
 
     private Vector3 _initialPosition;
     private float _animationElapsed = 0;
-
-    private Coroutine lockCoroutine;
+    public bool unlocked = false;
 
     private void Awake()
     {
@@ -27,42 +28,23 @@ public class DoorLock : MonoBehaviour
         transform.localPosition = _initialPosition;
     }
 
-    public void Open()
+    public void Unlock()
     {
-        if (lockCoroutine != null) StopCoroutine(lockCoroutine);
-        lockCoroutine = null;
-
-        gameObject.SetActive(true);
-        StartCoroutine(OpenCoroutine());
+        unlocked = true;
+        StopAllCoroutines();
+        gameObject.SetActive(false);
+        Instantiate(destroyParticles, transform.position, Quaternion.identity);
     }
 
     public void Lock()
     {
-        gameObject.SetActive(true);
-        lockCoroutine = StartCoroutine(CloseCoroutine());
-    }
-
-    private IEnumerator OpenCoroutine()
-    {
-        _animationElapsed = 0;
-
-        while (true)
+        if (unlocked)
         {
-            _animationElapsed += Time.deltaTime;
-
-            float t = _animationElapsed / openTime;
-            t = Ease.OutExpo(t);
-            transform.localScale = Vector3.Lerp(new Vector3(1,1,1), new Vector3(0,1,1), t);
-            transform.localPosition = Vector3.Lerp(_initialPosition, _initialPosition + new Vector3(-0.5f, 0, 0),t);
-
-            if (_animationElapsed >= openTime)
-            {
-                gameObject.SetActive(false);
-                break;
-            }
-
-            yield return null;
+            return;
         }
+
+        gameObject.SetActive(true);
+        StartCoroutine(CloseCoroutine());
     }
 
     private IEnumerator CloseCoroutine()

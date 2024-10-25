@@ -63,12 +63,13 @@ public class Door : Task
 	{
 		yield return new WaitForSeconds(delay);
 
-		if (isPlayingSound)
+		if (isPlayingSound && !doorLock.unlocked)
 		{
 			sourceLock.Stop();
 			sourceLock.pitch = 1 + delay * AUDIO_DELAY_PITCH_COEF;
 			sourceLock.Play();
 		}
+
 		doorLock.Lock();
 	}
 
@@ -87,7 +88,7 @@ public class Door : Task
 
 	private void UnlockLock(Task task)
 	{
-		_doorLocks[task].Open();
+		_doorLocks[task].Unlock();
 	}
 
 	public override void Reset()
