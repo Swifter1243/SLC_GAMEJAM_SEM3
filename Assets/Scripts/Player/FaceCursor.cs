@@ -5,13 +5,13 @@ using UnityEngine;
 public class FaceCursor : MonoBehaviour
 {
     private Camera _camera;
-    
+
     private void Start()
     {
         _camera = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
         transform.rotation = Quaternion.Euler(0, 0, GetAngle());
     }
@@ -26,7 +26,7 @@ public class FaceCursor : MonoBehaviour
     {
         Vector3 cursorWorld = _camera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 toCursor = cursorWorld - transform.position;
-        
+
         return toCursor;
     }
 }

@@ -58,7 +58,7 @@ public class Gun : MonoBehaviour
 
         Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.Initialize(player);
-        Vector2 direction = faceCursor.GetVectorToCursor();
+        Vector2 direction = faceCursor.GetVectorToCursor().normalized;
         bullet.rb.velocity = direction * shootForce;
     }
 }
