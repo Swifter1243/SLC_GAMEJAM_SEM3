@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AmmoDisplay : MonoBehaviour
 {
@@ -10,22 +11,23 @@ public class AmmoDisplay : MonoBehaviour
     public RectTransform splitPrefab;
     public RectTransform spacing;
     public RectTransform splitsParent;
+    public List<Image> splitImages = new();
+    public Color fullColor;
+    public Color emptyColor;
 
     private RectTransform _rt;
-
-    /*private void OnValidate()
-    {
-        UpdateSplits();
-    }*/
 
     private void Awake()
     {
         _rt = GetComponent<RectTransform>();
-        UpdateSplits();
+        UISingleton.OnAmmoChanged.AddListener(GenerateSplits);
     }
 
-    private void UpdateSplits()
+    public void GenerateSplits()
     {
+        splits = UISingleton.maxBullets;
+        splitImages.Clear();
+
         foreach (RectTransform rectTransform in splitsParent)
         {
             Destroy(rectTransform.gameObject);
@@ -46,6 +48,22 @@ public class AmmoDisplay : MonoBehaviour
             float x = Mathf.Lerp(a, b, t);
             split.transform.localPosition = new Vector2(x, 0);
             split.sizeDelta = new Vector2(splitScale, 1);
+
+            splitImages.Add(split.GetComponent<Image>());
+        }
+
+        splitImages.Reverse();
+        splitImages.Add(spacing.GetComponent<Image>());
+
+        UpdateColors();
+    }
+
+    private void UpdateColors()
+    {
+        for (int i = 0; i < splits; i++)
+        {
+            Image image = splitImages[i];
+            image.color = i < UISingleton.Bullets ? fullColor : emptyColor;
         }
     }
 }

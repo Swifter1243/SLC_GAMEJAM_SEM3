@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 7819338738309603952}
+  ammoDisplay: {fileID: 6832056487067161675}
   fadeTime: 0.1
 --- !u!225 &7819338738309603952
 CanvasGroup:
@@ -178,7 +179,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 100, y: 26.4}
+  m_SizeDelta: {x: 50, y: 26.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3335563881769467373
 CanvasRenderer:
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
+  m_ShowMaskGraphic: 0
 --- !u!114 &6832056487067161675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,8 +247,11 @@ MonoBehaviour:
   splits: 2
   inset: 0.1
   splitPrefab: {fileID: 4013524054286446776, guid: 6568b96a06442c64aa32cd666f8ed3e1, type: 3}
-  spacing: {fileID: 0}
+  spacing: {fileID: 2472490228684246367}
   splitsParent: {fileID: 689485427260519795}
+  splitImages: []
+  fullColor: {r: 0.09803922, g: 0.69803923, b: 0.84705883, a: 1}
+  emptyColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &8159411600713172223
 GameObject:
   m_ObjectHideFlags: 0

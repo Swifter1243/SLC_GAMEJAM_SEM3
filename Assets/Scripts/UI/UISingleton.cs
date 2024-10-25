@@ -10,6 +10,8 @@ public static class UISingleton
         set { _bullets = value; OnAmmoChanged.Invoke(); }
     }
 
+    public static int maxBullets;
+
     public static readonly UnityEvent OnAmmoChanged = new();
     public static readonly UnityEvent OnPlayerSpawned = new();
     public static readonly UnityEvent OnPlayerDeath = new();

@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class PlayerUIDetails : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
+    public AmmoDisplay ammoDisplay;
     public float fadeTime = 0.6f;
 
     private float _animationTime = 0;
