@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(AudioSource))]
 public class Door : Task
 {
 	public TaskGroup taskGroup;
@@ -17,11 +17,15 @@ public class Door : Task
 	public GameObject closedVisuals;
 	public GameObject openVisuals;
 
+	public AudioSource sourceLock;
+	private const float AUDIO_DELAY_PITCH_COEF = 0.15f;
+
 	private readonly Dictionary<Task, DoorLock> _doorLocks = new ();
 	private bool _isOpen = false;
 	private float _openTime = 0;
 
-	public void Initialize()
+
+	public void Initialize(bool isFirst = false)
 	{
 		taskGroup.onTaskComplete.AddListener(UnlockLock);
 
@@ -39,10 +43,10 @@ public class Door : Task
 			index++;
 		}
 
-		LockAllLocks();
+		LockAllLocks(isFirst);
 	}
 
-	private void LockAllLocks()
+	private void LockAllLocks(bool isFirst = false)
 	{
         StopAllCoroutines();
 
@@ -50,15 +54,21 @@ public class Door : Task
 		foreach (DoorLock doorLock in _doorLocks.Values)
 		{
 			doorLock.gameObject.SetActive(false);
-			StartCoroutine(Lock(doorLock, index * lockDelay));
+			StartCoroutine(Lock(doorLock, index * lockDelay, isFirst));
 			index++;
 		}
 	}
 
-	private IEnumerator Lock(DoorLock doorLock, float delay)
+	private IEnumerator Lock(DoorLock doorLock, float delay, bool isPlayingSound)
 	{
 		yield return new WaitForSeconds(delay);
 
+		if (isPlayingSound)
+		{
+			sourceLock.Stop();
+			sourceLock.pitch = 1 + delay * AUDIO_DELAY_PITCH_COEF;
+			sourceLock.Play();
+		}
 		doorLock.Lock();
 	}
 
