@@ -1546,7 +1546,7 @@ MonoBehaviour:
   - {fileID: 7541262720941002397, guid: 63b2c5f91ca97574eb4d97dd5d6b818f, type: 3}
   - {fileID: 4110115495648864144, guid: 868ffd082db4eeb4cb9dae9500b69f2c, type: 3}
   - {fileID: 5519262491179614870, guid: 4498dcec10121504ab94eada01231f54, type: 3}
-  currentLevelIndex: 0
+  currentLevelIndex: 7
   spacing: 42
   transitionTime: 2
 --- !u!1001 &1567488470
