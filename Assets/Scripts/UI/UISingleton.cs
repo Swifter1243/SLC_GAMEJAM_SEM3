@@ -15,6 +15,7 @@ public static class UISingleton
     public static readonly UnityEvent OnAmmoChanged = new();
     public static readonly UnityEvent OnPlayerSpawned = new();
     public static readonly UnityEvent OnPlayerDeath = new();
+    public static readonly UnityEvent OnLevelFinished = new();
 
     public static Vector3 playerWorldPosition;
 }

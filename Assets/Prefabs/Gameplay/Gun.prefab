@@ -148,5 +148,5 @@ MonoBehaviour:
       m_Calls: []
   bulletPrefab: {fileID: 1799921540454142370, guid: 7b60566996ac9df4dbb5e4c66b025586, type: 3}
   player: {fileID: 0}
-  shootForce: 20
+  shootForce: 40
   bulletsLeft: 10
