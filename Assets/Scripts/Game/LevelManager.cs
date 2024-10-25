@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
     public int currentLevelIndex = 0;
     public float spacing = 42;
     public float transitionTime = 2;
-    public Camera mainCamera;
 
     private Level _lastLevel;
     private Level _currentLevel;
@@ -49,7 +48,6 @@ public class LevelManager : MonoBehaviour
 
             if (_transitionElapsed >= transitionTime)
             {
-                mainCamera.transform.position = new Vector3(0, 0, mainCamera.transform.position.z);
                 _currentLevel.transform.position = new Vector2(0, 0);
                 _currentLevel.StartGameplay();
                 Destroy(_lastLevel.gameObject);
