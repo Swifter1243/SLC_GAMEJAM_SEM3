@@ -214,8 +214,8 @@ MonoBehaviour:
   speed: 30
   shootForce: 20
   source: {fileID: 2208350088764724701}
-  clipBounce: {fileID: 0}
-  clipNonBounce: {fileID: 0}
+  clipBounce: {fileID: 8300000, guid: de9ef5561695f43459cc6cfae435ed6d, type: 3}
+  clipNonBounce: {fileID: 8300000, guid: 04c8f0f44365596409cb7917533805bd, type: 3}
   clipShoot: {fileID: 8300000, guid: 8e90b070472f32b488663d8cd8d2c1c0, type: 3}
 --- !u!82 &2208350088764724701
 AudioSource:
