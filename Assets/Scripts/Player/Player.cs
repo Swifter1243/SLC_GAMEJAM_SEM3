@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IResettable
 
 	private int animMoveParameter;
 
-	const float AUDIO_PHYS_MIN_VELOCITY = 0.1f;
+	const float AUDIO_PHYS_MIN_VELOCITY = 2f;
 
 	private void Start()
 	{
