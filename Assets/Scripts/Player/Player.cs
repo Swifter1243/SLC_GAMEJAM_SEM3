@@ -142,6 +142,7 @@ public class Player : MonoBehaviour, IResettable
 		gun.Enable();
 		transform.position = _level.spawnPoint.position;
 		UpdateUIScreenPosition();
+		UISingleton.maxBullets = _level.info.bulletCount;
 		UISingleton.OnPlayerSpawned.Invoke();
 		rb.velocity = Vector2.zero;
 		ClearBullets();

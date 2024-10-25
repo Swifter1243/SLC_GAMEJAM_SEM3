@@ -38,6 +38,7 @@ public class Level : MonoBehaviour, IResettable
 
 	public void StartGameplay()
 	{
+		UISingleton.maxBullets = info.bulletCount;
 		_player = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 		_player.Initialize(this);
 		door.Initialize();
