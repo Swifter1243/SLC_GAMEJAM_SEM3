@@ -1,16 +1,33 @@
 ﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D), typeof(AudioSource))]
 public class TargetTask : Task
 {
-    public void Hit()
+    private AudioSource source;
+    private Collider2D trigger;
+
+    private void Start()
+	{
+        source = GetComponent<AudioSource>();
+        trigger = GetComponent<Collider2D>();
+	}
+
+
+	public void Hit()
     {
-        gameObject.SetActive(false);
+        foreach (Transform child in transform) child.gameObject.SetActive(false); //this is bad but no time lol
+        trigger.enabled = false;
+
+        source.Stop();
+        source.Play();
+
         CompleteTask();
     }
 
     public override void Reset()
     {
-        gameObject.SetActive(true);
+        trigger.enabled = true;
+        foreach (Transform child in transform) child.gameObject.SetActive(true);
     }
 }
