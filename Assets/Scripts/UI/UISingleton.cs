@@ -14,5 +14,5 @@ public static class UISingleton
     public static readonly UnityEvent OnPlayerSpawned = new();
     public static readonly UnityEvent OnPlayerDeath = new();
 
-    public static Vector2 playerScreenPosition;
+    public static Vector3 playerWorldPosition;
 }

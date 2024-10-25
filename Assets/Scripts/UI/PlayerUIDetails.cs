@@ -2,6 +2,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerUIDetails : MonoBehaviour
 {
@@ -79,6 +80,6 @@ public class PlayerUIDetails : MonoBehaviour
 
     private void UpdateScreenPosition()
     {
-        transform.position = UISingleton.playerScreenPosition;
+        transform.position = Camera.main.WorldToScreenPoint(UISingleton.playerWorldPosition);
     }
 }

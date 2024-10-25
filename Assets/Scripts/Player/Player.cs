@@ -67,7 +67,7 @@ public class Player : MonoBehaviour, IResettable
 
 	private void UpdateUIScreenPosition()
 	{
-		UISingleton.playerScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+		UISingleton.playerWorldPosition = transform.position;
 	}
 
 
