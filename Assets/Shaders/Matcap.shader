@@ -43,7 +43,7 @@ Shader "Unlit/Matcap"
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				
 				float3 worldNorm = UnityObjectToWorldNormal(v.normal);
-				o.normal = mul((float3x3)UNITY_MATRIX_V, v.normal);
+				o.normal = mul((float3x3)UNITY_MATRIX_V, worldNorm);
 				UNITY_TRANSFER_FOG(o,o.vertex);
 				return o;
 			}
@@ -56,11 +56,13 @@ Shader "Unlit/Matcap"
 				//col.rgb = abs(normal);
 
 				float3 normal = normalize(i.normal);
-				float2 uv = fixed2( //IDK what projection this is, probably equirectangular.
-					atan2(-normal.z, -normal.x),
-					atan2(-normal.z, -normal.y)
-				) / UNITY_FOUR_PI;
+				float2 uv = 0.5 + fixed2( //IDK what projection this is, probably equirectangular.
+					atan2(normal.x, normal.z),
+					atan2(normal.y, normal.z)
+				) / UNITY_PI;
 
+				
+				//col = normal.xyzx;
 				col = tex2D(_MainTex, uv) * _Color;
 				
 				// apply fog
