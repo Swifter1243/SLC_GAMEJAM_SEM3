@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Collider2D))]
 public class Door : Task
@@ -9,13 +10,22 @@ public class Door : Task
 	public TaskGroup taskGroup;
 	public DoorLock doorLockPrefab;
 	public float lockDelay = 0.1f;
+	public float openFloatPeriod = 2f;
+	public float openFloatAmount = 0.3f;
+	public float openFloatOffset = 1;
+
+	public GameObject closedVisuals;
+	public GameObject openVisuals;
 
 	private readonly Dictionary<Task, DoorLock> _doorLocks = new ();
 	private bool _isOpen = false;
+	private float _openTime = 0;
 
 	public void Initialize()
 	{
 		taskGroup.onTaskComplete.AddListener(UnlockLock);
+		openVisuals.SetActive(false);
+		closedVisuals.SetActive(true);
 
 		int index = 0;
 		foreach (Task task in taskGroup.tasks)
@@ -55,7 +65,9 @@ public class Door : Task
 	public void Open()
 	{
 		_isOpen = true;
-		// TODO: visuals
+		_openTime = 0;
+		openVisuals.SetActive(true);
+		closedVisuals.SetActive(false);
 	}
 
 	private void UnlockLock(Task task)
@@ -67,9 +79,18 @@ public class Door : Task
 	{
 		base.Reset();
 		_isOpen = false;
+		openVisuals.SetActive(false);
+		closedVisuals.SetActive(true);
 
 		StopAllCoroutines();
 		LockAllLocks();
+	}
+
+	private void Update()
+	{
+		_openTime += Time.deltaTime;
+		float y = Mathf.Sin(openFloatPeriod * _openTime) * openFloatAmount + openFloatOffset;
+		openVisuals.transform.localPosition = new Vector2(0, y);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collider)
