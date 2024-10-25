@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody),typeof(Collider),typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody),typeof(Collider))]
 public class Player : MonoBehaviour, IResettable
 {
 	public Rigidbody2D rb;
@@ -16,7 +16,6 @@ public class Player : MonoBehaviour, IResettable
 	public float speed;
 	public float shootForce;
 
-	public AudioSource source;
 	public AudioClip clipBounce;
 	public AudioClip clipNonBounce;
 	public AudioClip clipShoot;
@@ -111,12 +110,12 @@ public class Player : MonoBehaviour, IResettable
 			{
 				case Constants.LAYER_WORLD_BOUNCY:
 					{
-						source.PlayOneShot(clipBounce);
+						_level.audioSource.PlayOneShot(clipBounce);
 						break;
 					}
 				case Constants.LAYER_WORLD_NONBOUNCE:
 					{
-						source.PlayOneShot(clipNonBounce);
+						_level.audioSource.PlayOneShot(clipNonBounce);
 						break;
 					}
 				default:
@@ -138,7 +137,7 @@ public class Player : MonoBehaviour, IResettable
 	{
 		Vector2 toCursor = gun.faceCursor.GetVectorToCursor().normalized;
 		rb.velocity -= toCursor * shootForce;
-		source.PlayOneShot(clipShoot);
+		_level.audioSource.PlayOneShot(clipShoot);
 	}
 
 	public void Die()

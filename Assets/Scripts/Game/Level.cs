@@ -16,6 +16,7 @@ public class Level : MonoBehaviour, IResettable
 	public Transform spawnPoint;
 	public Player playerPrefab;
 	public Door door;
+	public AudioSource audioSource;
 
 	public LevelInfo info;
 
