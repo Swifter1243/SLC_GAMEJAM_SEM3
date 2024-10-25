@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glow
+  m_Name: Key Glow
   m_Shader: {fileID: 4800000, guid: cda587a93a2f0db49a92ad8e6f49a7c5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -30,6 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Mirrors: 7
+    - _Opacity: 0.457
     - _RotateSpeed: 0.1
     - _ShrinkPeriod: 3
     - _ShrinkSize: 0.2

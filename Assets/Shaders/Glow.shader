@@ -8,7 +8,8 @@ Shader "Unlit/Glow"
         _RotateSpeed ("Rotate Speed", Float) = 0.1
         _ShrinkSize ("Shrink Size", Float) = 0.2
         _ShrinkPeriod ("Shrink Period", Float) = 1
-    }
+        _Opacity ("Opacity", Range(0,1)) = 1
+     }
     SubShader
     {
         Tags {
@@ -71,7 +72,7 @@ Shader "Unlit/Glow"
                 float v = m * d2 + d * d;
 
 
-                return v * _Color;
+                return v * _Color * _Opacity;
             }
             ENDCG
         }
