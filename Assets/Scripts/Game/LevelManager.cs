@@ -13,6 +13,7 @@ public class LevelManager : MonoBehaviour
     public Camera mainCamera;
     public float outroTime = 4;
     public AudioSource musicSource;
+    public float doorUpwardOffset = 1.4f;
 
     private Level _lastLevel;
     private Level _currentLevel;
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour
     private float _lastCameraSize = 0;
     private Vector3 _lastCameraPosition;
     private float _lastMusicSourceVolume;
+    private float _lastDoorFloatAmount;
 
     private void Start()
     {
@@ -92,6 +94,7 @@ public class LevelManager : MonoBehaviour
         _lastCameraSize = mainCamera.orthographicSize;
         _lastCameraPosition = mainCamera.transform.position;
         _lastMusicSourceVolume = musicSource.volume;
+        _lastDoorFloatAmount = _currentLevel.door.openFloatAmount;
 
         while (true)
         {
@@ -110,11 +113,12 @@ public class LevelManager : MonoBehaviour
 
             float size = Mathf.Lerp(_lastCameraSize, 0, t2);
             mainCamera.orthographicSize = size;
-            Vector3 targetPosition = _currentLevel.door.transform.position + new Vector3(0, 1, 0);
+            Vector3 targetPosition = _currentLevel.door.transform.position + new Vector3(0, doorUpwardOffset, 0);
             targetPosition.z = _lastCameraPosition.z;
             Vector3 pos = Vector3.Lerp(_lastCameraPosition, targetPosition, t);
             mainCamera.transform.position = pos;
             musicSource.volume = Mathf.Lerp(_lastMusicSourceVolume, 0, t);
+            _currentLevel.door.openFloatAmount = Mathf.Lerp(_lastDoorFloatAmount, 0, t);
 
             yield return null;
         }
